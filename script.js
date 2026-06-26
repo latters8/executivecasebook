@@ -7,7 +7,7 @@ const data = {
     heroTag: '14+ лет практики · B2B · B2C · Business Development',
     heroTitle: 'Бизнес — это <span class="highlight">система</span>,<br>а не набор инструментов.',
     heroText: [
-      '<span class="hero__text-lead">«Рост замедляется не из-за отсутствия идей. А потому, что маркетинг, продажи и стратегия работают изолированно.»</span>',
+      '<p class="hero__text-lead">«Рост замедляется не из-за отсутствия идей.</p><p class="hero__text-lead" style="margin-top: -0.5rem;">А потому, что маркетинг, продажи и стратегия работают изолированно.»</p>',
       'Устойчивое развитие требует единой модели, где каждое решение усиливает другие.',
       'Маркетинг — это не про инструменты. Это про понимание людей и их потребностей.'
     ],
@@ -112,7 +112,7 @@ const data = {
     heroTag: '14+ years of practice · B2B · B2C · Business Development',
     heroTitle: 'Business is a <span class="highlight">system</span>,<br>not a collection of tools.',
     heroText: [
-      '<span class="hero__text-lead">«Growth slows not because of a lack of ideas, but because marketing, sales, and strategy operate in isolation.»</span>',
+      '<p class="hero__text-lead">«Growth slows not because of a lack of ideas.</p><p class="hero__text-lead" style="margin-top: -0.5rem;">But because marketing, sales, and strategy operate in isolation.»</p>',
       'Sustainable development requires a unified model where every decision reinforces the others.',
       'Marketing is not about tools. It\'s about understanding people and their needs.'
     ],
