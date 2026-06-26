@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Владимир Барбашин — Executive Casebook</title>
+
+  <!-- ФАВИКОН -->
+  <link rel="icon" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,450;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════════
+     HEADER
+     ════════════════════════════════════════════════════════════ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <div class="header__left">
+      <div class="logo">
+        <span class="logo__icon">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="42" fill="#111111"/>
+            <circle cx="50" cy="50" r="38" fill="#1A1A1A"/>
+            <circle cx="42" cy="40" r="6" fill="rgba(255,255,255,0.2)" filter="url(#blur)"/>
+            <ellipse cx="40" cy="38" rx="4" ry="2" fill="rgba(255,255,255,0.35)" transform="rotate(-25,40,38)"/>
+            <circle cx="62" cy="62" r="3" fill="rgba(255,255,255,0.06)"/>
+            <defs>
+              <filter id="blur"><feGaussianBlur stdDeviation="1.5"/></filter>
+            </defs>
+          </svg>
+        </span>
+        <span class="logo__text" id="logoText">Владимир Барбашин</span>
+      </div>
+      <div class="logo__sub" id="logoSub">Бизнес · Маркетинг · Стратегия</div>
+    </div>
+    <nav class="nav" id="nav">
+      <a href="#cases" id="navCases">Кейсы</a>
+      <a href="#metrics" id="navMetrics">Цифры</a>
+      <a href="#competencies" id="navCompetencies">Компетенции</a>
+      <a href="#contact" id="navContact">Контакты</a>
+    </nav>
+    <div class="header__right">
+      <div class="lang-switch" id="langSwitch">
+        <span class="lang-switch__active" id="langActive">РУ</span>
+        <span class="lang-switch__sep">|</span>
+        <span class="lang-switch__inactive" id="langInactive">EN</span>
+      </div>
+      <a href="#contact" class="btn btn--primary btn--small" id="headerContact">Связаться</a>
+      <button class="burger" id="burger" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════════════════════════
+     HERO
+     ════════════════════════════════════════════════════════════ -->
+<section class="hero" id="hero">
+  <div class="hero__bg-image" style="background-image: url('assets/hero-placeholder.jpg');"></div>
+  <div class="hero__bg"></div>
+
+  <div class="container">
+    <div class="hero__layout">
+      <div class="hero__content">
+        <div class="hero__tag" id="heroTag">14+ лет практики · B2B · B2C · Business Development</div>
+        <h1 class="hero__title" id="heroTitle">
+          Бизнес — это система,<br>а не набор инструментов.
+        </h1>
+        <div class="hero__text" id="heroText">
+          <p class="hero__text-lead">«Рост замедляется не из-за отсутствия идей. А потому, что маркетинг, продажи и стратегия работают изолированно.»</p>
+          <p>Устойчивое развитие требует единой модели, где каждое решение усиливает другие.</p>
+          <p>Маркетинг — это не про инструменты. Это про понимание людей и их потребностей.</p>
+        </div>
+
+        <div class="hero-metrics" id="heroMetrics">
+          <div class="hero-metric">
+            <div class="hero-metric__number">14+</div>
+            <div class="hero-metric__label" id="m1">лет практики</div>
+          </div>
+          <div class="hero-metric">
+            <div class="hero-metric__number">2</div>
+            <div class="hero-metric__label" id="m2">рынка B2B · B2C</div>
+          </div>
+          <div class="hero-metric">
+            <div class="hero-metric__number">3</div>
+            <div class="hero-metric__label" id="m3">направления</div>
+          </div>
+          <div class="hero-metric">
+            <div class="hero-metric__number">∞</div>
+            <div class="hero-metric__label" id="m4">развитие</div>
+          </div>
+          <div class="hero-metric">
+            <div class="hero-metric__number">1</div>
+            <div class="hero-metric__label" id="m5">системный взгляд</div>
+          </div>
+        </div>
+
+        <div class="hero__thought" id="heroThought">
+          <p>Решение лежит не в инструментах, а в их связи.</p>
+        </div>
+      </div>
+
+      <div class="hero__visual" aria-hidden="true">
+        <div class="hero__photo-card">
+          <img src="assets/picture.JPG" alt="Фото Владимира Барбашина">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     PERSPECTIVE SWITCH
+     ════════════════════════════════════════════════════════════ -->
+<div class="perspective-switch-wrapper" id="perspectiveWrapper">
+  <div class="container">
+    <div class="perspective-switch__label" id="perspectiveLabel">Выберите перспективу</div>
+    <div class="perspective-switch" id="perspectiveSwitch">
+      <button type="button" class="perspective-option active" data-perspective="business" id="pBusiness">
+        <span class="dot"></span> <span id="pBusinessLabel">Бизнес</span>
+      </button>
+      <button type="button" class="perspective-option" data-perspective="marketing" id="pMarketing">
+        <span class="dot"></span> <span id="pMarketingLabel">Маркетинг</span>
+      </button>
+      <button type="button" class="perspective-option" data-perspective="strategy" id="pStrategy">
+        <span class="dot"></span> <span id="pStrategyLabel">Стратегия</span>
+      </button>
+    </div>
+    <div class="perspective-switch__sub" id="perspectiveSub">Один опыт. Три перспективы. Один системный подход.</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     CASES
+     ════════════════════════════════════════════════════════════ -->
+<section class="section" id="cases">
+  <div class="section-bg" style="background-image: url('assets/cases-placeholder.jpg'); opacity:0.05;"></div>
+  <div class="container">
+    <h2 class="section-title" id="casesTitle">Практические <span class="highlight">кейсы</span></h2>
+    <div class="section-sub" id="casesSub">
+      <p>Каждый проект — это задача, решение и результат. Принцип один: понять систему, изменить систему, получить устойчивый рост.</p>
+    </div>
+    <div id="casesContainer" class="perspective-content">
+      <!-- заполняется из JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     DIGITAL FOOTPRINT
+     ════════════════════════════════════════════════════════════ -->
+<section class="section section--dark" id="metrics">
+  <div class="section-bg" style="background-image: url('assets/metrics-placeholder.jpg'); opacity:0.04;"></div>
+  <div class="container">
+    <h2 class="section-title" id="metricsTitle">Цифровой <span class="highlight">след</span></h2>
+    <p class="section-sub" id="metricsSub">Реальные результаты, измеряемые в цифрах</p>
+
+    <div class="metric-network" id="metricNetwork">
+      <svg viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet">
+        <line class="active" x1="450" y1="210" x2="150" y2="80" />
+        <line class="active" x1="450" y1="210" x2="300" y2="60" />
+        <line class="active" x1="450" y1="210" x2="450" y2="100" />
+        <line class="active" x1="450" y1="210" x2="600" y2="60" />
+        <line class="active" x1="450" y1="210" x2="720" y2="180" />
+        <line class="active" x1="450" y1="210" x2="180" y2="200" />
+        <line class="active" x1="450" y1="210" x2="300" y2="340" />
+        <line class="active" x1="450" y1="210" x2="120" y2="350" />
+        <line class="active" x1="450" y1="210" x2="450" y2="360" />
+        <line class="active" x1="450" y1="210" x2="720" y2="280" />
+        <line class="active" x1="450" y1="210" x2="760" y2="340" />
+        <line class="active" x1="450" y1="210" x2="500" y2="260" />
+      </svg>
+
+      <div class="metric-node" style="left:12%; top:12%;">
+        <div class="metric-node__number">14+</div>
+        <div class="metric-node__label" id="n1">лет опыта</div>
+      </div>
+      <div class="metric-node" style="left:28%; top:4%;">
+        <div class="metric-node__number">2+ млрд</div>
+        <div class="metric-node__label" id="n2">оборот (₽)</div>
+      </div>
+      <div class="metric-node" style="left:47%; top:14%;">
+        <div class="metric-node__number">100+</div>
+        <div class="metric-node__label" id="n3">брендов</div>
+      </div>
+      <div class="metric-node" style="left:62%; top:4%;">
+        <div class="metric-node__number">15000+</div>
+        <div class="metric-node__label" id="n4">SKU</div>
+      </div>
+      <div class="metric-node" style="left:78%; top:28%;">
+        <div class="metric-node__number">1300+</div>
+        <div class="metric-node__label" id="n5">дилеров</div>
+      </div>
+      <div class="metric-node" style="left:15%; top:42%;">
+        <div class="metric-node__number">+30%</div>
+        <div class="metric-node__label" id="n6">рост лидов</div>
+      </div>
+      <div class="metric-node" style="left:32%; top:72%;">
+        <div class="metric-node__number">+310</div>
+        <div class="metric-node__label" id="n7">пунктов ИКС</div>
+      </div>
+      <div class="metric-node" style="left:55%; top:50%;">
+        <div class="metric-node__number">+20%</div>
+        <div class="metric-node__label" id="n8">рост продаж</div>
+      </div>
+      <div class="metric-node" style="left:77%; top:62%;">
+        <div class="metric-node__number">40+</div>
+        <div class="metric-node__label" id="n9">магазинов</div>
+      </div>
+      <div class="metric-node" style="left:85%; top:82%;">
+        <div class="metric-node__number">300+</div>
+        <div class="metric-node__label" id="n10">сотрудников</div>
+      </div>
+      <div class="metric-node" style="left:8%; top:78%;">
+        <div class="metric-node__number">6 млн</div>
+        <div class="metric-node__label" id="n11">бюджет</div>
+      </div>
+      <div class="metric-node" style="left:48%; top:85%;">
+        <div class="metric-node__number">AI</div>
+        <div class="metric-node__label" id="n12">внедрение</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     COMPETENCIES
+     ════════════════════════════════════════════════════════════ -->
+<section class="section section--center" id="competencies">
+  <div class="section-bg" style="background-image: url('assets/competencies-placeholder.jpg'); opacity:0.04;"></div>
+  <div class="container">
+    <h2 class="section-title" id="compTitle">
+      Компетенции,<br>
+      <span class="highlight">которые работают</span><br>
+      не по отдельности,<br>
+      а как единая система.
+    </h2>
+    <div class="section-sub section-sub--wide" id="compSub">
+      В современной компании невозможно провести чёткую границу между маркетингом, коммерцией, развитием продукта, аналитикой, цифровой трансформацией и управлением. Каждое решение влияет на десятки других процессов.
+    </div>
+    <div class="competency-grid stagger" id="compGrid">
+      <!-- заполняется из JS -->
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     FUTURE
+     ════════════════════════════════════════════════════════════ -->
+<section class="section section--dark section--center" id="future">
+  <div class="section-bg" style="background-image: url('assets/future-placeholder.jpg'); opacity:0.05;"></div>
+  <div class="container">
+    <h2 class="section-title" id="futureTitle">
+      Бизнес будущего —<br>
+      это управление<br>
+      <span class="highlight">не функциями,</span><br>
+      а взаимосвязанными системами.
+    </h2>
+    <div class="section-sub section-sub--wide" id="futureSub">
+      <p id="futureP1">За последние годы бизнес изменился сильнее, чем за предыдущие десятилетия. Изменились технологии, ожидания клиентов, способы принятия решений. Появился искусственный интеллект, автоматизация стала доступной практически каждой компании.</p>
+      <p style="margin-top:0.8rem;" id="futureP2">При этом фундамент бизнеса остался прежним: компания создаёт ценность для клиента, команда реализует стратегию, руководитель принимает решения в условиях неопределённости. Меняются инструменты, но не меняются принципы.</p>
+      <p style="margin-top:0.8rem; color: rgba(255,255,255,0.7);" id="futureP3"><strong>Именно на пересечении бизнеса, управления и технологий я вижу следующий этап профессионального развития.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     CONTACT
+     ════════════════════════════════════════════════════════════ -->
+<section class="section" id="contact">
+  <div class="section-bg" style="background-image: url('assets/contact-placeholder.jpg'); opacity:0.04;"></div>
+  <div class="container">
+    <div class="contact__inner">
+      <h2 class="section-title" id="contactTitle">Продолжить <span class="highlight">разговор</span></h2>
+      <div class="section-sub" id="contactSub">
+        <p id="contactP1">Спасибо, что уделили время знакомству с моим опытом.</p>
+        <p id="contactP2">Если вы считаете, что мой опыт может быть полезен вашей компании или проекту, буду рад продолжить общение.</p>
+        <p id="contactP3">Лучшие идеи редко появляются в одиночку. Они рождаются в открытом профессиональном диалоге.</p>
+      </div>
+
+      <form class="contact-form" id="contactForm" method="POST" action="/send">
+        <div class="contact-form__field">
+          <label for="name" id="nameLabel">Ваше имя</label>
+          <input type="text" id="name" name="name" placeholder="Как к вам обращаться?" required>
+        </div>
+        <div class="contact-form__field">
+          <label for="email" id="emailLabel">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="contact-form__field">
+          <label for="message" id="msgLabel">Ваше сообщение</label>
+          <textarea id="message" name="message" rows="6" placeholder="Представьтесь и расскажите о вашем проекте..." required></textarea>
+        </div>
+        <div class="honeypot" aria-hidden="true">
+          <label for="honeypot">Оставьте это поле пустым</label>
+          <input type="text" id="honeypot" name="honeypot" tabindex="-1" autocomplete="off">
+        </div>
+        <button type="submit" class="btn btn--primary btn--large" id="sendBtn">Отправить</button>
+        <div class="contact-form__status" id="formStatus"></div>
+      </form>
+
+      <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.05);">
+        <h3 style="font-size:1.1rem;margin-bottom:1.2rem;color:rgba(255,255,255,0.6);font-weight:500;text-align:center;" id="valuesTitle">Ценности, которые определяют мой подход к работе</h3>
+
+        <div class="values-grid stagger" id="valuesGrid">
+          <div class="value-item" id="v1"><span>01</span> <span id="v1t">Системность — любое решение должно учитывать последствия для всей компании.</span></div>
+          <div class="value-item" id="v2"><span>02</span> <span id="v2t">Любознательность — сильные решения появляются, когда руководитель продолжает учиться.</span></div>
+          <div class="value-item" id="v3"><span>03</span> <span id="v3t">Ответственность — каждое решение влияет на людей, клиентов и развитие бизнеса.</span></div>
+          <div class="value-item" id="v4"><span>04</span> <span id="v4t">Развитие — нет идеальных систем. Любая система может быть улучшена.</span></div>
+          <div class="value-item" id="v5"><span>05</span> <span id="v5t">Практичность — любая идея должна приносить пользу бизнесу.</span></div>
+          <div class="value-item" id="v6"><span>06</span> <span id="v6t">Долгосрочный взгляд — устойчивое развитие всегда строится с расчётом на годы вперёд.</span></div>
+        </div>
+      </div>
+
+      <div class="quote-block" style="margin:2.5rem 0 0.5rem;">
+        <p id="quote1">«В конечном счёте компании развиваются не благодаря отдельным инструментам.</p>
+        <p id="quote2">Они развиваются благодаря людям, способным видеть систему целиком и последовательно делать её лучше.»</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     FOOTER
+     ════════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__left" id="footerYear">© 2026</div>
+    <div class="footer__right">
+      <div class="lang-switch" id="langSwitchFooter">
+        <span class="lang-switch__active" id="langActiveF">РУ</span>
+        <span class="lang-switch__sep">|</span>
+        <span class="lang-switch__inactive" id="langInactiveF">EN</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════════════════════════
+     BACK TO TOP
+     ════════════════════════════════════════════════════════════ -->
+<button class="back-to-top" id="backToTop" aria-label="Наверх">
+  <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
