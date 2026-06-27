@@ -436,7 +436,7 @@ function syncAccentStyles() {
   const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#C9A84C';
   document.querySelectorAll('.highlight').forEach(el => { el.style.color = accent; });
   document.querySelectorAll('.hero-metric__number').forEach(el => { el.style.color = accent; });
-  document.querySelectorAll('.metric-glass__number').forEach(el => { el.style.color = accent; });
+  document.querySelectorAll('.metric-node__number').forEach(el => { el.style.color = accent; });
   document.querySelectorAll('.competency-card__num').forEach(el => { el.style.color = accent; });
 }
 
@@ -701,29 +701,51 @@ function loadSaved() {
 }
 
 // ============================================================
-// 6. АНИМАЦИЯ ДЛЯ GLASS-КАРТОЧЕК
+// 6. АНИМАЦИЯ ДЛЯ ОБЛАКА СВЯЗЕЙ
 // ============================================================
 
-function initMetricsAnimation() {
-  const glassCards = document.querySelectorAll('.metric-glass');
-  if (!glassCards.length) return;
+function initMetricsCloud() {
+  const nodes = document.querySelectorAll('.metric-node');
+  const lines = document.querySelectorAll('.cloud-line');
 
+  if (!nodes.length) return;
+
+  // Появление узлов
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const delay = index * 80;
+        const delay = parseInt(entry.target.dataset.delay) || 0;
         setTimeout(() => {
           entry.target.classList.add('visible');
-        }, delay);
+        }, delay * 100);
         observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -40px 0px'
+    threshold: 0.1,
+    rootMargin: '0px 0px -30px 0px'
   });
 
-  glassCards.forEach(card => observer.observe(card));
+  nodes.forEach(node => observer.observe(node));
+
+  // Активация линий после появления 60% узлов
+  let visibleCount = 0;
+  const totalNodes = nodes.length;
+
+  nodes.forEach(node => {
+    const checkObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          visibleCount++;
+          if (visibleCount >= Math.ceil(totalNodes * 0.6)) {
+            lines.forEach(line => line.classList.add('active'));
+          }
+          checkObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    checkObserver.observe(node);
+  });
 }
 
 // ============================================================
@@ -855,8 +877,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal, .stagger, .competency-card, .case-card, .value-item, .card, .competency-grid, .values-grid, .grid-2, .grid-3')
     .forEach(el => observer.observe(el));
 
-  // Анимация для Glass-карточек
-  initMetricsAnimation();
+  // Анимация для облака связей
+  initMetricsCloud();
 
   console.log('✅ Executive Casebook v15 — GitHub структура');
 });
