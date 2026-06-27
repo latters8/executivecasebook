@@ -158,7 +158,7 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     DIGITAL FOOTPRINT
+     DIGITAL FOOTPRINT — НОВАЯ АДАПТИВНАЯ ВЕРСИЯ
      ════════════════════════════════════════════════════════════ -->
 <section class="section section--dark" id="metrics">
   <div class="section-bg" style="background-image: url('assets/metrics-placeholder.svg'); opacity:0.04;"></div>
@@ -166,69 +166,55 @@
     <h2 class="section-title" id="metricsTitle">Цифровой <span class="highlight">след</span></h2>
     <p class="section-sub" id="metricsSub">Реальные результаты, измеряемые в цифрах</p>
 
-    <div class="metric-network" id="metricNetwork">
-      <svg viewBox="0 0 900 420" preserveAspectRatio="xMidYMid meet">
-        <line class="active" x1="450" y1="210" x2="150" y2="80" />
-        <line class="active" x1="450" y1="210" x2="300" y2="60" />
-        <line class="active" x1="450" y1="210" x2="450" y2="100" />
-        <line class="active" x1="450" y1="210" x2="600" y2="60" />
-        <line class="active" x1="450" y1="210" x2="720" y2="180" />
-        <line class="active" x1="450" y1="210" x2="180" y2="200" />
-        <line class="active" x1="450" y1="210" x2="300" y2="340" />
-        <line class="active" x1="450" y1="210" x2="120" y2="350" />
-        <line class="active" x1="450" y1="210" x2="450" y2="360" />
-        <line class="active" x1="450" y1="210" x2="720" y2="280" />
-        <line class="active" x1="450" y1="210" x2="760" y2="340" />
-        <line class="active" x1="450" y1="210" x2="500" y2="260" />
-      </svg>
-
-      <div class="metric-node" style="left:12%; top:12%;">
-        <div class="metric-node__number">14+</div>
-        <div class="metric-node__label" id="n1">лет опыта</div>
+    <div class="metrics-grid">
+      <!-- 12 метрик в сетке 4×3 на десктопе, 3×4 на планшете, 2×6 на мобильном -->
+      <div class="metric-tile">
+        <span class="metric-tile__number">14+</span>
+        <span class="metric-tile__label" id="n1">лет опыта</span>
       </div>
-      <div class="metric-node" style="left:28%; top:4%;">
-        <div class="metric-node__number">2+ млрд</div>
-        <div class="metric-node__label" id="n2">оборот (₽)</div>
+      <div class="metric-tile">
+        <span class="metric-tile__number">2+ млрд</span>
+        <span class="metric-tile__label" id="n2">оборот (₽)</span>
       </div>
-      <div class="metric-node" style="left:47%; top:14%;">
-        <div class="metric-node__number">100+</div>
-        <div class="metric-node__label" id="n3">брендов</div>
+      <div class="metric-tile">
+        <span class="metric-tile__number">100+</span>
+        <span class="metric-tile__label" id="n3">брендов</span>
       </div>
-      <div class="metric-node" style="left:62%; top:4%;">
-        <div class="metric-node__number">15000+</div>
-        <div class="metric-node__label" id="n4">SKU</div>
+      <div class="metric-tile">
+        <span class="metric-tile__number">15 000+</span>
+        <span class="metric-tile__label" id="n4">SKU</span>
       </div>
-      <div class="metric-node" style="left:78%; top:28%;">
-        <div class="metric-node__number">1300+</div>
-        <div class="metric-node__label" id="n5">дилеров</div>
+      <div class="metric-tile">
+        <span class="metric-tile__number">1 300+</span>
+        <span class="metric-tile__label" id="n5">дилеров</span>
       </div>
-      <div class="metric-node" style="left:15%; top:42%;">
-        <div class="metric-node__number">+30%</div>
-        <div class="metric-node__label" id="n6">рост лидов</div>
+      <div class="metric-tile">
+        <span class="metric-tile__number">+30%</span>
+        <span class="metric-tile__label" id="n6">рост лидов</span>
       </div>
-      <div class="metric-node" style="left:32%; top:72%;">
-        <div class="metric-node__number">+310</div>
-        <div class="metric-node__label" id="n7">пунктов ИКС</div>
+      <div class="metric-tile">
+        <span class="metric-tile__number">+310</span>
+        <span class="metric-tile__label" id="n7">пунктов ИКС</span>
       </div>
-      <div class="metric-node" style="left:55%; top:50%;">
-        <div class="metric-node__number">+20%</div>
-        <div class="metric-node__label" id="n8">рост продаж</div>
+      <div class="metric-tile">
+        <span class="metric-tile__number">+20%</span>
+        <span class="metric-tile__label" id="n8">рост продаж</span>
       </div>
-      <div class="metric-node" style="left:77%; top:62%;">
-        <div class="metric-node__number">40+</div>
-        <div class="metric-node__label" id="n9">магазинов</div>
+      <div class="metric-tile">
+        <span class="metric-tile__number">40+</span>
+        <span class="metric-tile__label" id="n9">магазинов</span>
       </div>
-      <div class="metric-node" style="left:85%; top:82%;">
-        <div class="metric-node__number">300+</div>
-        <div class="metric-node__label" id="n10">сотрудников</div>
+      <div class="metric-tile">
+        <span class="metric-tile__number">300+</span>
+        <span class="metric-tile__label" id="n10">сотрудников</span>
       </div>
-      <div class="metric-node" style="left:8%; top:78%;">
-        <div class="metric-node__number">6+ млн</div>
-        <div class="metric-node__label" id="n11">бюджет</div>
+      <div class="metric-tile">
+        <span class="metric-tile__number">6+ млн</span>
+        <span class="metric-tile__label" id="n11">бюджет</span>
       </div>
-      <div class="metric-node" style="left:48%; top:85%;">
-        <div class="metric-node__number">AI</div>
-        <div class="metric-node__label" id="n12">внедрение</div>
+      <div class="metric-tile">
+        <span class="metric-tile__number">AI</span>
+        <span class="metric-tile__label" id="n12">внедрение</span>
       </div>
     </div>
   </div>
