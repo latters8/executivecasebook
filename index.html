@@ -372,116 +372,21 @@ CONTACT — ФОРМА С ОТКЛЮЧЁННОЙ КНОПКОЙ
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-BRANDS SLIDER — ФИНАЛЬНЫЙ ВАРИАНТ
+BRANDS SLIDER — УПРАВЛЯЕТСЯ ЧЕРЕЗ JS
 ════════════════════════════════════════════════════════════ -->
-<div style="padding:40px 0;background:rgba(255,255,255,0.01);border-top:1px solid rgba(255,255,255,0.03);overflow:hidden;">
-  <div style="max-width:1280px;margin:0 auto;padding:0 32px;">
-    <div style="text-align:center;margin-bottom:32px;">
-      <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.15em;color:rgba(255,255,255,0.3);">Бренды</div>
-      <div style="font-size:1.2rem;color:rgba(255,255,255,0.6);">С которыми я работал</div>
+<section class="brands-slider" id="brands">
+  <div class="container">
+    <div class="brands-slider__header">
+      <span class="brands-slider__label" id="brandsLabel">Бренды</span>
+      <span class="brands-slider__sub" id="brandsSub">С которыми я работал</span>
     </div>
-    <div style="overflow:hidden;mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);">
-      <div style="display:flex;gap:48px;animation:scrollBrands 30s linear infinite;width:max-content;">
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Fender</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Yamaha</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Marshall</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Mesa Boogie</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Korg</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Vox</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Roland</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Boss</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Kawai</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Gibson</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Epiphone</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Ibanez</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Schecter</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Orange</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Blackstar</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">JBL</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Fishman</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Sennheiser</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">AKG</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">FBT</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Behringer</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Ampeg</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Line 6</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Jackson</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Charvel</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Gretsch</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Squier</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Mono</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Takamine</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Soundcraft</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">DBX</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">DigiTech</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">TC Electronic</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">PreSonus</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Focusrite</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Novation</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Akai Professional</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Native Instruments</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Ableton</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Universal Audio</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">D'Addario</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Involight</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">YME audiotechnik</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Anzhee</span>
-        <!-- Дублируем для бесконечной анимации -->
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Fender</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Yamaha</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Marshall</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Mesa Boogie</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Korg</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Vox</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Roland</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Boss</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Kawai</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Gibson</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Epiphone</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Ibanez</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Schecter</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Orange</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Blackstar</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">JBL</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Fishman</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Sennheiser</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">AKG</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">FBT</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Behringer</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Ampeg</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Line 6</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Jackson</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Charvel</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Gretsch</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Squier</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Mono</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Takamine</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Soundcraft</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">DBX</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">DigiTech</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">TC Electronic</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">PreSonus</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Focusrite</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Novation</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Akai Professional</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Native Instruments</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Ableton</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Universal Audio</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">D'Addario</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Involight</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">YME audiotechnik</span>
-        <span style="font-size:1.2rem;font-weight:500;color:rgba(255,255,255,0.4);white-space:nowrap;">Anzhee</span>
+    <div class="brands-slider__track-wrapper">
+      <div class="brands-slider__track" id="brandsTrack">
+        <!-- заполняется из JS -->
       </div>
     </div>
   </div>
-</div>
-
-<style>
-@keyframes scrollBrands {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-</style>
+</section>
 
 <!-- ════════════════════════════════════════════════════════════
 FOOTER
