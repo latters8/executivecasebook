@@ -81,6 +81,7 @@
           <p>Маркетинг — это не про инструменты. Это про понимание людей и их потребностей.</p>
         </div>
 
+        <!-- 6 метрик вместо 5 -->
         <div class="hero-metrics" id="heroMetrics">
           <div class="hero-metric">
             <div class="hero-metric__number">14+</div>
@@ -102,6 +103,10 @@
             <div class="hero-metric__number">1</div>
             <div class="hero-metric__label" id="m5">системный взгляд</div>
           </div>
+          <div class="hero-metric">
+            <div class="hero-metric__number">CEO</div>
+            <div class="hero-metric__label" id="m6">C-level опыт</div>
+          </div>
         </div>
 
         <div class="hero__thought" id="heroThought">
@@ -119,7 +124,7 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     PERSPECTIVE SWITCH
+     PERSPECTIVE SWITCH (с анимацией скрытия на мобильных)
      ════════════════════════════════════════════════════════════ -->
 <div class="perspective-switch-wrapper" id="perspectiveWrapper">
   <div class="container">
@@ -156,7 +161,7 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     DIGITAL FOOTPRINT — АДАПТИВНАЯ СЕТКА
+     DIGITAL FOOTPRINT — АНИМИРОВАННЫЕ КАРТОЧКИ (стиль Notion)
      ════════════════════════════════════════════════════════════ -->
 <section class="section section--dark" id="metrics">
   <div class="section-bg" style="background-image: url('assets/metrics-placeholder.svg'); opacity:0.04;"></div>
@@ -164,52 +169,52 @@
     <h2 class="section-title" id="metricsTitle">Цифровой <span class="highlight">след</span></h2>
     <p class="section-sub" id="metricsSub">Реальные результаты, измеряемые в цифрах</p>
 
-    <div class="metrics-grid">
-      <div class="metric-tile">
+    <div class="metrics-grid notion-grid" id="metricsGrid">
+      <div class="metric-tile notion-card" data-delay="0">
         <span class="metric-tile__number">14+</span>
         <span class="metric-tile__label" id="n1">лет опыта</span>
       </div>
-      <div class="metric-tile">
+      <div class="metric-tile notion-card" data-delay="1">
         <span class="metric-tile__number">2+ млрд</span>
         <span class="metric-tile__label" id="n2">оборот (₽)</span>
       </div>
-      <div class="metric-tile">
+      <div class="metric-tile notion-card" data-delay="2">
         <span class="metric-tile__number">100+</span>
         <span class="metric-tile__label" id="n3">брендов</span>
       </div>
-      <div class="metric-tile">
+      <div class="metric-tile notion-card" data-delay="3">
         <span class="metric-tile__number">15 000+</span>
         <span class="metric-tile__label" id="n4">SKU</span>
       </div>
-      <div class="metric-tile">
+      <div class="metric-tile notion-card" data-delay="4">
         <span class="metric-tile__number">1 300+</span>
         <span class="metric-tile__label" id="n5">дилеров</span>
       </div>
-      <div class="metric-tile">
+      <div class="metric-tile notion-card" data-delay="5">
         <span class="metric-tile__number">+30%</span>
         <span class="metric-tile__label" id="n6">рост лидов</span>
       </div>
-      <div class="metric-tile">
+      <div class="metric-tile notion-card" data-delay="6">
         <span class="metric-tile__number">+310</span>
         <span class="metric-tile__label" id="n7">пунктов ИКС</span>
       </div>
-      <div class="metric-tile">
+      <div class="metric-tile notion-card" data-delay="7">
         <span class="metric-tile__number">+20%</span>
         <span class="metric-tile__label" id="n8">рост продаж</span>
       </div>
-      <div class="metric-tile">
+      <div class="metric-tile notion-card" data-delay="8">
         <span class="metric-tile__number">40+</span>
         <span class="metric-tile__label" id="n9">магазинов</span>
       </div>
-      <div class="metric-tile">
+      <div class="metric-tile notion-card" data-delay="9">
         <span class="metric-tile__number">300+</span>
         <span class="metric-tile__label" id="n10">сотрудников</span>
       </div>
-      <div class="metric-tile">
+      <div class="metric-tile notion-card" data-delay="10">
         <span class="metric-tile__number">6+ млн</span>
         <span class="metric-tile__label" id="n11">бюджет</span>
       </div>
-      <div class="metric-tile">
+      <div class="metric-tile notion-card" data-delay="11">
         <span class="metric-tile__number">AI</span>
         <span class="metric-tile__label" id="n12">внедрение</span>
       </div>
@@ -259,7 +264,64 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     BRANDS SLIDER — 40+ КЛЮЧЕВЫХ БРЕНДОВ
+     CONTACT
+     ════════════════════════════════════════════════════════════ -->
+<section class="section" id="contact">
+  <div class="section-bg" style="background-image: url('assets/contact-placeholder.svg'); opacity:0.04;"></div>
+  <div class="container">
+    <div class="contact__inner">
+      <h2 class="section-title" id="contactTitle">Продолжить <span class="highlight">разговор</span></h2>
+      <div class="section-sub" id="contactSub">
+        <p id="contactP1">Спасибо, что уделили время знакомству с моим опытом.</p>
+        <p id="contactP2">Если вы считаете, что мой опыт может быть полезен вашей компании или проекту, буду рад продолжить общение.</p>
+        <p id="contactP3">Лучшие идеи редко появляются в одиночку. Они рождаются в открытом профессиональном диалоге.</p>
+      </div>
+
+      <form class="contact-form" id="contactForm" method="POST" action="https://formspree.io/f/mqevqjqz">
+        <div class="contact-form__field">
+          <label for="name" id="nameLabel">Ваше имя</label>
+          <input type="text" id="name" name="name" placeholder="Как к вам обращаться?" required>
+        </div>
+        <div class="contact-form__field">
+          <label for="email" id="emailLabel">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
+        </div>
+        <div class="contact-form__field">
+          <label for="message" id="msgLabel">Ваше сообщение</label>
+          <textarea id="message" name="message" rows="6" placeholder="Представьтесь и расскажите о вашем проекте..." required></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="Новое сообщение с Executive Casebook">
+        <div class="honeypot" aria-hidden="true">
+          <label for="honeypot">Оставьте это поле пустым</label>
+          <input type="text" id="honeypot" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+        <button type="submit" class="btn btn--primary btn--large" id="sendBtn">Отправить</button>
+        <div class="contact-form__status" id="formStatus"></div>
+      </form>
+
+      <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.05);">
+        <h3 style="font-size:1.1rem;margin-bottom:1.2rem;color:rgba(255,255,255,0.6);font-weight:500;text-align:center;" id="valuesTitle">Ценности, которые определяют мой подход к работе</h3>
+
+        <div class="values-grid stagger" id="valuesGrid">
+          <div class="value-item" id="v1"><span>01</span> <span id="v1t">Системность — любое решение должно учитывать последствия для всей компании.</span></div>
+          <div class="value-item" id="v2"><span>02</span> <span id="v2t">Любознательность — сильные решения появляются, когда руководитель продолжает учиться.</span></div>
+          <div class="value-item" id="v3"><span>03</span> <span id="v3t">Ответственность — каждое решение влияет на людей, клиентов и развитие бизнеса.</span></div>
+          <div class="value-item" id="v4"><span>04</span> <span id="v4t">Развитие — нет идеальных систем. Любая система может быть улучшена.</span></div>
+          <div class="value-item" id="v5"><span>05</span> <span id="v5t">Практичность — любая идея должна приносить пользу бизнесу.</span></div>
+          <div class="value-item" id="v6"><span>06</span> <span id="v6t">Долгосрочный взгляд — устойчивое развитие всегда строится с расчётом на годы вперёд.</span></div>
+        </div>
+      </div>
+
+      <div class="quote-block" style="margin:2.5rem 0 0.5rem;">
+        <p id="quote1">«В конечном счёте компании развиваются не благодаря отдельным инструментам.</p>
+        <p id="quote2">Они развиваются благодаря людям, способным видеть систему целиком и последовательно делать её лучше.»</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════════════════
+     BRANDS SLIDER — ПЕРЕД ПОДВАЛОМ
      ════════════════════════════════════════════════════════════ -->
 <section class="brands-slider" id="brands">
   <div class="container">
@@ -269,53 +331,6 @@
     </div>
     <div class="brands-slider__track-wrapper">
       <div class="brands-slider__track">
-        <!-- ОСНОВНОЙ СПИСОК (40+ брендов) -->
-        <span class="brand-slide">Fender</span>
-        <span class="brand-slide">Yamaha</span>
-        <span class="brand-slide">Marshall</span>
-        <span class="brand-slide">Mesa Boogie</span>
-        <span class="brand-slide">Korg</span>
-        <span class="brand-slide">Vox</span>
-        <span class="brand-slide">Roland</span>
-        <span class="brand-slide">Boss</span>
-        <span class="brand-slide">Kawai</span>
-        <span class="brand-slide">Gibson</span>
-        <span class="brand-slide">Epiphone</span>
-        <span class="brand-slide">Ibanez</span>
-        <span class="brand-slide">Schecter</span>
-        <span class="brand-slide">Orange</span>
-        <span class="brand-slide">Blackstar</span>
-        <span class="brand-slide">JBL</span>
-        <span class="brand-slide">Shure</span>
-        <span class="brand-slide">Sennheiser</span>
-        <span class="brand-slide">AKG</span>
-        <span class="brand-slide">RCF</span>
-        <span class="brand-slide">Behringer</span>
-        <span class="brand-slide">Mackie</span>
-        <span class="brand-slide">Line 6</span>
-        <span class="brand-slide">Fender Amps</span>
-        <span class="brand-slide">Jackson</span>
-        <span class="brand-slide">Charvel</span>
-        <span class="brand-slide">Gretsch</span>
-        <span class="brand-slide">Squier</span>
-        <span class="brand-slide">Guild</span>
-        <span class="brand-slide">Takamine</span>
-        <span class="brand-slide">Soundcraft</span>
-        <span class="brand-slide">DBX</span>
-        <span class="brand-slide">DigiTech</span>
-        <span class="brand-slide">TC Electronic</span>
-        <span class="brand-slide">PreSonus</span>
-        <span class="brand-slide">Focusrite</span>
-        <span class="brand-slide">Novation</span>
-        <span class="brand-slide">Akai Professional</span>
-        <span class="brand-slide">Native Instruments</span>
-        <span class="brand-slide">Ableton</span>
-        <span class="brand-slide">Universal Audio</span>
-        <span class="brand-slide">ADJ</span>
-        <span class="brand-slide">Chauvet</span>
-        <span class="brand-slide">Soundking</span>
-        <span class="brand-slide">ANZHEE</span>
-        <!-- ДУБЛИРУЕМ ДЛЯ БЕСКОНЕЧНОСТИ (те же бренды) -->
         <span class="brand-slide">Fender</span>
         <span class="brand-slide">Yamaha</span>
         <span class="brand-slide">Marshall</span>
@@ -361,73 +376,52 @@
         <span class="brand-slide">Involight</span>
         <span class="brand-slide">YME audiotechnik</span>
         <span class="brand-slide">Anzhee</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════
-     CONTACT
-     ════════════════════════════════════════════════════════════ -->
-<section class="section" id="contact">
-  <div class="section-bg" style="background-image: url('assets/contact-placeholder.svg'); opacity:0.04;"></div>
-  <div class="container">
-    <div class="contact__inner">
-      <h2 class="section-title" id="contactTitle">Продолжить <span class="highlight">разговор</span></h2>
-      <div class="section-sub" id="contactSub">
-        <p id="contactP1">Спасибо, что уделили время знакомству с моим опытом.</p>
-        <p id="contactP2">Если вы считаете, что мой опыт может быть полезен вашей компании или проекту, буду рад продолжить общение.</p>
-        <p id="contactP3">Лучшие идеи редко появляются в одиночку. Они рождаются в открытом профессиональном диалоге.</p>
-      </div>
-
-    <!-- ФОРМА С FORMPREE -->
-<form class="contact-form" 
-      id="contactForm" 
-      method="POST" 
-      action="https://formspree.io/f/mqevqjqz">
-
-  <div class="contact-form__field">
-    <label for="name" id="nameLabel">Ваше имя</label>
-    <input type="text" id="name" name="name" placeholder="Как к вам обращаться?" required>
-  </div>
-
-  <div class="contact-form__field">
-    <label for="email" id="emailLabel">Email</label>
-    <input type="email" id="email" name="email" placeholder="your@email.com" required>
-  </div>
-
-  <div class="contact-form__field">
-    <label for="message" id="msgLabel">Ваше сообщение</label>
-    <textarea id="message" name="message" rows="6" placeholder="Представьтесь и расскажите о вашем проекте..." required></textarea>
-  </div>
-
-  <!-- Honeypot-поле и настройка темы письма для Formspree -->
-  <input type="hidden" name="_subject" value="Новое сообщение с Executive Casebook">
-  <div class="honeypot" aria-hidden="true">
-    <label for="honeypot">Оставьте это поле пустым</label>
-    <input type="text" id="honeypot" name="_gotcha" tabindex="-1" autocomplete="off">
-  </div>
-
-  <button type="submit" class="btn btn--primary btn--large" id="sendBtn">Отправить</button>
-  <div class="contact-form__status" id="formStatus"></div>
-</form>
-
-      <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.05);">
-        <h3 style="font-size:1.1rem;margin-bottom:1.2rem;color:rgba(255,255,255,0.6);font-weight:500;text-align:center;" id="valuesTitle">Ценности, которые определяют мой подход к работе</h3>
-
-        <div class="values-grid stagger" id="valuesGrid">
-          <div class="value-item" id="v1"><span>01</span> <span id="v1t">Системность — любое решение должно учитывать последствия для всей компании.</span></div>
-          <div class="value-item" id="v2"><span>02</span> <span id="v2t">Любознательность — сильные решения появляются, когда руководитель продолжает учиться.</span></div>
-          <div class="value-item" id="v3"><span>03</span> <span id="v3t">Ответственность — каждое решение влияет на людей, клиентов и развитие бизнеса.</span></div>
-          <div class="value-item" id="v4"><span>04</span> <span id="v4t">Развитие — нет идеальных систем. Любая система может быть улучшена.</span></div>
-          <div class="value-item" id="v5"><span>05</span> <span id="v5t">Практичность — любая идея должна приносить пользу бизнесу.</span></div>
-          <div class="value-item" id="v6"><span>06</span> <span id="v6t">Долгосрочный взгляд — устойчивое развитие всегда строится с расчётом на годы вперёд.</span></div>
-        </div>
-      </div>
-
-      <div class="quote-block" style="margin:2.5rem 0 0.5rem;">
-        <p id="quote1">«В конечном счёте компании развиваются не благодаря отдельным инструментам.</p>
-        <p id="quote2">Они развиваются благодаря людям, способным видеть систему целиком и последовательно делать её лучше.»</p>
+        <!-- Дублируем для бесконечности -->
+        <span class="brand-slide">Fender</span>
+        <span class="brand-slide">Yamaha</span>
+        <span class="brand-slide">Marshall</span>
+        <span class="brand-slide">Mesa Boogie</span>
+        <span class="brand-slide">Korg</span>
+        <span class="brand-slide">Vox</span>
+        <span class="brand-slide">Roland</span>
+        <span class="brand-slide">Boss</span>
+        <span class="brand-slide">Kawai</span>
+        <span class="brand-slide">Gibson</span>
+        <span class="brand-slide">Epiphone</span>
+        <span class="brand-slide">Ibanez</span>
+        <span class="brand-slide">Schecter</span>
+        <span class="brand-slide">Orange</span>
+        <span class="brand-slide">Blackstar</span>
+        <span class="brand-slide">JBL</span>
+        <span class="brand-slide">Fishman</span>
+        <span class="brand-slide">Sennheiser</span>
+        <span class="brand-slide">AKG</span>
+        <span class="brand-slide">FBT</span>
+        <span class="brand-slide">Behringer</span>
+        <span class="brand-slide">Ampeg</span>
+        <span class="brand-slide">Line 6</span>
+        <span class="brand-slide">Fender Amps</span>
+        <span class="brand-slide">Jackson</span>
+        <span class="brand-slide">Charvel</span>
+        <span class="brand-slide">Gretsch</span>
+        <span class="brand-slide">Squier</span>
+        <span class="brand-slide">Mono</span>
+        <span class="brand-slide">Takamine</span>
+        <span class="brand-slide">Soundcraft</span>
+        <span class="brand-slide">DBX</span>
+        <span class="brand-slide">DigiTech</span>
+        <span class="brand-slide">TC Electronic</span>
+        <span class="brand-slide">PreSonus</span>
+        <span class="brand-slide">Focusrite</span>
+        <span class="brand-slide">Novation</span>
+        <span class="brand-slide">Akai Professional</span>
+        <span class="brand-slide">Native Instruments</span>
+        <span class="brand-slide">Ableton</span>
+        <span class="brand-slide">Universal Audio</span>
+        <span class="brand-slide">D'Addario</span>
+        <span class="brand-slide">Involight</span>
+        <span class="brand-slide">YME audiotechnik</span>
+        <span class="brand-slide">Anzhee</span>
       </div>
     </div>
   </div>
