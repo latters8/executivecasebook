@@ -104,7 +104,7 @@ const data = {
       strategy: { task: 'Стратегическая задача', solution: 'Стратегическое решение', result: 'Результат' }
     },
     brandsLabel: 'Бренды',
-    brandsSub: 'С которыми я работал',
+    brandsSub: 'с которыми я работал',
     brandsList: ['Fender', 'Yamaha', 'Marshall', 'Mesa Boogie', 'Korg', 'Vox', 'Roland', 'Boss', 'Kawai', 'Gibson', 'Epiphone', 'Ibanez', 'Schecter', 'Orange', 'Blackstar', 'JBL', 'Fishman', 'Sennheiser', 'AKG', 'FBT', 'Behringer', 'Ampeg', 'Line 6', 'Fender Amps', 'Jackson', 'Charvel', 'Gretsch', 'Squier', 'Mono', 'Takamine', 'Soundcraft', 'DBX', 'DigiTech', 'TC Electronic', 'PreSonus', 'Focusrite', 'Novation', 'Akai Professional', 'Native Instruments', 'Ableton', 'Universal Audio', "D'Addario", 'Involight', 'YME audiotechnik', 'Anzhee']
   },
   en: {
