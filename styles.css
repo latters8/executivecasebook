@@ -1787,6 +1787,385 @@ NEW ANIMATIONS — PULSE, SHIMMER, WAVE, ROTATE, FALL
 /* ============================================================
 REDUCED MOTION
 ============================================================ */
+/* ============================================================
+FIX: ВЕРТИКАЛЬНОЕ ОТОБРАЖЕНИЕ (МОБИЛЬНЫЕ)
+============================================================ */
+
+/* Общие правки для всех мобильных */
+@media (max-width: 768px) {
+  /* Контейнер — меньше отступы */
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Секции — меньше паддинг */
+  .section {
+    padding: 40px 0;
+  }
+
+  /* Hero — перестроение */
+  .hero {
+    padding: 100px 0 30px;
+    min-height: auto;
+  }
+
+  .hero__layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .hero__content {
+    max-width: 100%;
+  }
+
+  .hero__visual {
+    margin-top: 0;
+    justify-content: center;
+  }
+
+  .hero__photo-card {
+    width: min(100%, 280px);
+  }
+
+  .hero__photo-card img {
+    max-height: 360px;
+  }
+
+  .hero__title {
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+  }
+
+  .hero__text p {
+    font-size: 0.95rem;
+  }
+
+  .hero__text-lead {
+    font-size: 1rem !important;
+  }
+
+  /* Метрики — 2 колонки */
+  .hero-metrics {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .hero-metric {
+    padding: 8px 4px;
+  }
+
+  .hero-metric__number {
+    font-size: 1.1rem;
+  }
+
+  .hero-metric__label {
+    font-size: 0.5rem;
+  }
+
+  /* Perspective Switch */
+  .perspective-switch-wrapper {
+    top: 56px;
+    padding: 10px 0 8px;
+  }
+
+  .perspective-switch {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .perspective-option {
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    gap: 6px;
+  }
+
+  .perspective-option .dot {
+    width: 7px;
+    height: 7px;
+  }
+
+  .perspective-switch__label {
+    font-size: 0.7rem;
+  }
+
+  .perspective-switch__sub {
+    font-size: 0.75rem;
+  }
+
+  /* Заголовки */
+  .section-title {
+    font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    padding: 0 8px;
+  }
+
+  /* Кейсы — карточки */
+  .case-card {
+    padding: 16px 14px;
+  }
+
+  .case-card__top {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .case-card__company {
+    font-size: 1.1rem;
+  }
+
+  .case-card__stats {
+    gap: 4px 12px;
+    font-size: 0.8rem;
+  }
+
+  .case-card__block p {
+    font-size: 0.9rem;
+  }
+
+  /* Компетенции — 1 колонка */
+  .competency-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .competency-card {
+    padding: 16px;
+  }
+
+  /* Облако связей — УВЕЛИЧИВАЕМ ВЫСОТУ */
+  .metrics-cloud {
+    min-height: 800px;
+    padding: 10px 0;
+  }
+
+  /* Узлы — меньшие и адаптивные */
+  .metric-node {
+    padding: 6px 8px;
+    min-width: 36px;
+    border-radius: 8px;
+  }
+
+  .metric-node__number {
+    font-size: 0.75rem;
+  }
+
+  .metric-node__label {
+    font-size: 0.45rem;
+    max-width: 40px;
+  }
+
+  /* Корректировка позиций узлов для мобильных */
+  .metric-node:nth-child(1) { left: 5%; top: 10%; }
+  .metric-node:nth-child(2) { left: 20%; top: 2%; }
+  .metric-node:nth-child(3) { left: 38%; top: 8%; }
+  .metric-node:nth-child(4) { left: 55%; top: 2%; }
+  .metric-node:nth-child(5) { left: 72%; top: 15%; }
+  .metric-node:nth-child(6) { left: 8%; top: 38%; }
+  .metric-node:nth-child(7) { left: 22%; top: 70%; }
+  .metric-node:nth-child(8) { left: 45%; top: 55%; }
+  .metric-node:nth-child(9) { left: 68%; top: 65%; }
+  .metric-node:nth-child(10) { left: 78%; top: 80%; }
+  .metric-node:nth-child(11) { left: 2%; top: 78%; }
+  .metric-node:nth-child(12) { left: 40%; top: 85%; }
+
+  /* Видеофон — отключаем на мобильных */
+  .section-bg-video {
+    display: none !important;
+  }
+
+  .section--video .section-bg {
+    display: block !important;
+    opacity: 0.08;
+  }
+
+  /* Бренды */
+  .brands-slider {
+    padding: 30px 0 20px;
+  }
+
+  .brands-slider__track {
+    gap: 20px;
+  }
+
+  .brand-slide {
+    font-size: 0.75rem;
+  }
+
+  .brands-slider__sub {
+    font-size: 0.9rem;
+  }
+
+  /* Ценности — 1 колонка */
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .value-item {
+    min-height: auto;
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+
+  /* Цитата */
+  .quote-block p {
+    font-size: 1rem;
+  }
+
+  /* Форма */
+  .contact-form {
+    gap: 14px;
+  }
+
+  .contact-form__field input,
+  .contact-form__field textarea {
+    padding: 12px 14px;
+    font-size: 0.9rem;
+  }
+
+  .btn--large {
+    padding: 14px 24px;
+    font-size: 0.9rem;
+  }
+
+  /* Частицы — скрываем на мобильных (для производительности) */
+  .particle {
+    display: none;
+  }
+
+  /* Back to top */
+  .back-to-top {
+    bottom: 16px;
+    right: 16px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .back-to-top svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  /* Футер */
+  .footer__inner {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+/* Очень маленькие экраны (до 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .hero__title {
+    font-size: 1.5rem;
+  }
+
+  .hero__photo-card {
+    width: min(100%, 200px);
+  }
+
+  .hero__photo-card img {
+    max-height: 280px;
+  }
+
+  .hero-metrics {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+  }
+
+  .hero-metric {
+    padding: 4px 2px;
+  }
+
+  .hero-metric__number {
+    font-size: 0.9rem;
+  }
+
+  .hero-metric__label {
+    font-size: 0.4rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
+
+  .metrics-cloud {
+    min-height: 700px;
+  }
+
+  .metric-node {
+    padding: 4px 5px;
+    min-width: 28px;
+  }
+
+  .metric-node__number {
+    font-size: 0.6rem;
+  }
+
+  .metric-node__label {
+    font-size: 0.4rem;
+    max-width: 32px;
+  }
+
+  .case-card {
+    padding: 12px 10px;
+  }
+
+  .case-card__company {
+    font-size: 0.95rem;
+  }
+
+  .case-card__stats {
+    font-size: 0.7rem;
+    gap: 4px 8px;
+  }
+
+  .brand-slide {
+    font-size: 0.65rem;
+  }
+
+  .brands-slider__track {
+    gap: 14px;
+  }
+
+  .value-item {
+    font-size: 0.8rem;
+    padding: 10px 12px;
+  }
+
+  .btn--large {
+    padding: 10px 18px;
+    font-size: 0.8rem;
+  }
+
+  .perspective-option {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+  }
+
+  .perspective-option .dot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .perspective-switch {
+    gap: 2px;
+    padding: 3px;
+  }
+
+  .section-sub {
+    font-size: 0.85rem;
+  }
+}
 
 @media (prefers-reduced-motion: reduce) {
   *,
