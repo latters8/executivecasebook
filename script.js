@@ -12,7 +12,7 @@ const data = {
       'Маркетинг — это не про инструменты. Это про понимание людей и их потребностей.'
     ],
     heroThought: 'Решение лежит не в инструментах, а в их связи.',
-    metrics: ['лет практики', 'рынка B2B · B2C', 'направления', 'развитие', 'системный взгляд'],
+    metrics: ['лет практики', 'рынка B2B · B2C', 'направления', 'развитие', 'системный взгляд', 'C-level опыт'],
     perspectiveLabel: 'Выберите перспективу',
     perspectiveSub: 'Один опыт. Три перспективы. Один системный подход.',
     pLabels: ['Бизнес', 'Маркетинг', 'Стратегия'],
@@ -117,7 +117,7 @@ const data = {
       'Marketing is not about tools. It\'s about understanding people and their needs.'
     ],
     heroThought: 'The solution lies not in tools, but in their connection.',
-    metrics: ['years of practice', 'markets B2B · B2C', 'directions', 'development', 'systemic view'],
+    metrics: ['years of practice', 'markets B2B · B2C', 'directions', 'development', 'systemic view', 'C-level experience'],
     perspectiveLabel: 'Choose your perspective',
     perspectiveSub: 'One experience. Three perspectives. One systemic approach.',
     pLabels: ['Business', 'Marketing', 'Strategy'],
@@ -447,7 +447,7 @@ function renderHero() {
   const textEl = document.getElementById('heroText');
   textEl.innerHTML = d.heroText.map(p => `<p>${p}</p>`).join('');
   document.getElementById('heroThought').querySelector('p').textContent = d.heroThought;
-  const labels = ['m1','m2','m3','m4','m5'];
+  const labels = ['m1','m2','m3','m4','m5','m6'];
   d.metrics.forEach((label, i) => {
     if (labels[i]) document.getElementById(labels[i]).textContent = label;
   });
@@ -701,7 +701,93 @@ function loadSaved() {
 }
 
 // ============================================================
-// 6. ИНИЦИАЛИЗАЦИЯ
+// 6. АНИМАЦИЯ ДЛЯ NOTION-КАРТОЧЕК
+// ============================================================
+
+function initNotionCards() {
+  const cards = document.querySelectorAll('.notion-card');
+  if (!cards.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        const delay = parseInt(entry.target.dataset.delay) || 0;
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, delay * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -30px 0px'
+  });
+
+  cards.forEach(card => observer.observe(card));
+}
+
+// ============================================================
+// 7. УПРАВЛЕНИЕ СКРЫТИЕМ ПЕРСПЕКТИВ НА МОБИЛЬНЫХ
+// ============================================================
+
+function initPerspectiveHide() {
+  const wrapper = document.getElementById('perspectiveWrapper');
+  if (!wrapper) return;
+
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+
+  const update = () => {
+    const currentScrollY = window.scrollY;
+    const isMobile = window.innerWidth <= 768;
+
+    if (!isMobile) {
+      wrapper.classList.remove('hidden');
+      lastScrollY = currentScrollY;
+      ticking = false;
+      return;
+    }
+
+    if (currentScrollY > 100) {
+      if (currentScrollY > lastScrollY) {
+        wrapper.classList.add('hidden');
+      } else {
+        wrapper.classList.remove('hidden');
+      }
+    } else {
+      wrapper.classList.remove('hidden');
+    }
+
+    lastScrollY = currentScrollY;
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      wrapper.classList.remove('hidden');
+    }
+  });
+
+  // Показываем при скролле вверх после скрытия
+  let lastScrollUp = 0;
+  window.addEventListener('scroll', () => {
+    const current = window.scrollY;
+    if (current < lastScrollUp && current > 100) {
+      wrapper.classList.remove('hidden');
+    }
+    lastScrollUp = current;
+  });
+}
+
+// ============================================================
+// 8. ИНИЦИАЛИЗАЦИЯ
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -766,53 +852,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Form
+  // ============================================================
+  // ФОРМА — ОТПРАВКА ЧЕРЕЗ FORMPREE (без fetch)
+  // ============================================================
   const form = document.getElementById('contactForm');
   const statusEl = document.getElementById('formStatus');
+
   if (form) {
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const honeypot = document.getElementById('honeypot');
-      const name = document.getElementById('name');
-      const email = document.getElementById('email');
-      const message = document.getElementById('message');
-      if (honeypot.value.trim() !== '') {
-        statusEl.textContent = '✅ ' + (currentLang === 'ru' ? 'Сообщение отправлено' : 'Message sent');
-        statusEl.className = 'contact-form__status';
-        form.reset();
-        return;
-      }
-      if (!message.value.trim()) {
-        statusEl.textContent = '⚠️ ' + (currentLang === 'ru' ? 'Пожалуйста, напишите сообщение' : 'Please write a message');
-        statusEl.className = 'contact-form__status error';
-        return;
-      }
-      statusEl.textContent = '⏳ ' + (currentLang === 'ru' ? 'Отправка...' : 'Sending...');
+    // Просто показываем статус, форма отправляется стандартным способом через action
+    form.addEventListener('submit', function(e) {
+      // Не отменяем отправку — форма уходит на Formspree
+      statusEl.textContent = '⏳ Отправка...';
       statusEl.className = 'contact-form__status';
-      try {
-        const response = await fetch('/send', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: name.value.trim(),
-            email: email.value.trim(),
-            message: message.value.trim()
-          })
-        });
-        const result = await response.json().catch(() => ({}));
-        if (response.ok) {
-          statusEl.textContent = '✅ ' + (currentLang === 'ru' ? 'Сообщение отправлено. Спасибо!' : 'Message sent. Thank you!');
-          statusEl.className = 'contact-form__status';
-          form.reset();
-        } else {
-          const serverMessage = result.error || (currentLang === 'ru' ? 'Ошибка при отправке. Попробуйте позже.' : 'Error sending. Please try again.');
-          statusEl.textContent = '❌ ' + serverMessage;
-          statusEl.className = 'contact-form__status error';
-        }
-      } catch (err) {
-        statusEl.textContent = '❌ ' + (currentLang === 'ru' ? 'Ошибка соединения. Попробуйте позже.' : 'Connection error. Please try again.');
-        statusEl.className = 'contact-form__status error';
-      }
     });
   }
 
@@ -829,5 +880,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal, .stagger, .competency-card, .case-card, .value-item, .card, .competency-grid, .values-grid, .grid-2, .grid-3')
     .forEach(el => observer.observe(el));
 
-  console.log('✅ Executive Casebook v15 — GitHub структура');
+  // Анимация для Notion-карточек
+  initNotionCards();
+
+  // Управление скрытием перспектив на мобильных
+  initPerspectiveHide();
+
+  console.log('✅ Executive Casebook v15 — Formspree подключён');
 });
