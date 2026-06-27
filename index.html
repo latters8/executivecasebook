@@ -7,20 +7,18 @@
 
   <!-- ФАВИКОН -->
   <link rel="icon" href="assets/favicon.svg">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,450;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Formspree AJAX -->
- <!-- <script src="https://unpkg.com/@formspree/ajax@1" defer></script> -->
+  <!-- ⚠️ Formspree временно отключен -->
+  <!-- <script src="https://unpkg.com/@formspree/ajax@1" defer></script> -->
 </head>
 <body>
 
 <!-- ════════════════════════════════════════════════════════════
-     HEADER
-     ════════════════════════════════════════════════════════════ -->
+HEADER
+════════════════════════════════════════════════════════════ -->
 <header class="header" id="header">
   <div class="container header__inner">
     <div class="header__left">
@@ -41,12 +39,14 @@
       </div>
       <div class="logo__sub" id="logoSub">Бизнес · Маркетинг · Стратегия</div>
     </div>
+
     <nav class="nav" id="nav">
       <a href="#cases" id="navCases">Кейсы</a>
       <a href="#metrics" id="navMetrics">Цифры</a>
       <a href="#competencies" id="navCompetencies">Компетенции</a>
       <a href="#contact" id="navContact">Контакты</a>
     </nav>
+
     <div class="header__right">
       <div class="lang-switch" id="langSwitch">
         <span class="lang-switch__active" id="langActive">РУ</span>
@@ -62,18 +62,17 @@
 </header>
 
 <!-- ════════════════════════════════════════════════════════════
-     HERO
-     ════════════════════════════════════════════════════════════ -->
+HERO
+════════════════════════════════════════════════════════════ -->
 <section class="hero" id="hero">
   <div class="hero__bg-image" style="background-image: url('assets/hero-placeholder.svg');"></div>
   <div class="hero__bg"></div>
-
   <div class="container">
     <div class="hero__layout">
       <div class="hero__content">
         <div class="hero__tag" id="heroTag">14+ лет практики · B2B · B2C · Business Development</div>
         <h1 class="hero__title" id="heroTitle">
-          Бизнес — это система,<br>а не набор инструментов.
+          Бизнес — это <span class="highlight">система</span>,<br>а не набор инструментов.
         </h1>
         <div class="hero__text" id="heroText">
           <p class="hero__text-lead">
@@ -84,7 +83,7 @@
           <p>Маркетинг — это не про инструменты. Это про понимание людей и их потребностей.</p>
         </div>
 
-        <!-- 6 метрик вместо 5 -->
+        <!-- 6 метрик -->
         <div class="hero-metrics" id="heroMetrics">
           <div class="hero-metric">
             <div class="hero-metric__number">14+</div>
@@ -127,8 +126,8 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     PERSPECTIVE SWITCH (с анимацией скрытия на мобильных)
-     ════════════════════════════════════════════════════════════ -->
+PERSPECTIVE SWITCH
+════════════════════════════════════════════════════════════ -->
 <div class="perspective-switch-wrapper" id="perspectiveWrapper">
   <div class="container">
     <div class="perspective-switch__label" id="perspectiveLabel">Выберите перспективу</div>
@@ -148,8 +147,8 @@
 </div>
 
 <!-- ════════════════════════════════════════════════════════════
-     CASES
-     ════════════════════════════════════════════════════════════ -->
+CASES
+════════════════════════════════════════════════════════════ -->
 <section class="section" id="cases">
   <div class="section-bg" style="background-image: url('assets/cases-placeholder.svg'); opacity:0.05;"></div>
   <div class="container">
@@ -164,8 +163,8 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     DIGITAL FOOTPRINT — ОБЛАКО СВЯЗЕЙ
-     ════════════════════════════════════════════════════════════ -->
+DIGITAL FOOTPRINT — ПАУТИНА
+════════════════════════════════════════════════════════════ -->
 <section class="section section--dark" id="metrics">
   <div class="section-bg" style="background-image: url('assets/metrics-placeholder.svg'); opacity:0.04;"></div>
   <div class="container">
@@ -173,8 +172,15 @@
     <p class="section-sub" id="metricsSub">Реальные результаты, измеряемые в цифрах</p>
 
     <div class="metrics-cloud" id="metricsCloud">
-      <!-- SVG-линии соединений -->
+      <!-- SVG-паутина -->
       <svg class="metrics-cloud__svg" viewBox="0 0 900 500" preserveAspectRatio="xMidYMid meet">
+        <!-- ОРБИТЫ -->
+        <circle class="cloud-orbit" cx="450" cy="250" r="80" />
+        <circle class="cloud-orbit" cx="450" cy="250" r="140" />
+        <circle class="cloud-orbit" cx="450" cy="250" r="200" />
+        <circle class="cloud-orbit" cx="450" cy="250" r="250" />
+
+        <!-- ЛИНИИ ОТ ЦЕНТРА -->
         <line class="cloud-line" x1="450" y1="250" x2="120" y2="80" />
         <line class="cloud-line" x1="450" y1="250" x2="280" y2="60" />
         <line class="cloud-line" x1="450" y1="250" x2="450" y2="90" />
@@ -187,23 +193,12 @@
         <line class="cloud-line" x1="450" y1="250" x2="720" y2="320" />
         <line class="cloud-line" x1="450" y1="250" x2="760" y2="400" />
         <line class="cloud-line" x1="450" y1="250" x2="560" y2="290" />
-        <line class="cloud-line active" x1="450" y1="250" x2="120" y2="80" />
-        <line class="cloud-line active" x1="450" y1="250" x2="280" y2="60" />
-        <line class="cloud-line active" x1="450" y1="250" x2="450" y2="90" />
-        <line class="cloud-line active" x1="450" y1="250" x2="620" y2="60" />
-        <line class="cloud-line active" x1="450" y1="250" x2="760" y2="180" />
-        <line class="cloud-line active" x1="450" y1="250" x2="180" y2="200" />
-        <line class="cloud-line active" x1="450" y1="250" x2="300" y2="380" />
-        <line class="cloud-line active" x1="450" y1="250" x2="120" y2="400" />
-        <line class="cloud-line active" x1="450" y1="250" x2="450" y2="420" />
-        <line class="cloud-line active" x1="450" y1="250" x2="720" y2="320" />
-        <line class="cloud-line active" x1="450" y1="250" x2="760" y2="400" />
-        <line class="cloud-line active" x1="450" y1="250" x2="560" y2="290" />
-        <!-- Центральная точка -->
-        <circle class="cloud-center" cx="450" cy="250" r="6" />
+
+        <!-- ЦЕНТР -->
+        <circle class="cloud-center" cx="450" cy="250" />
       </svg>
 
-      <!-- Метрики-узлы -->
+      <!-- УЗЛЫ -->
       <div class="metric-node" style="left:10%; top:12%;" data-delay="0">
         <span class="metric-node__number">14+</span>
         <span class="metric-node__label" id="n1">лет опыта</span>
@@ -257,8 +252,8 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     COMPETENCIES
-     ════════════════════════════════════════════════════════════ -->
+COMPETENCIES
+════════════════════════════════════════════════════════════ -->
 <section class="section section--center" id="competencies">
   <div class="section-bg" style="background-image: url('assets/competencies-placeholder.svg'); opacity:0.04;"></div>
   <div class="container">
@@ -278,8 +273,8 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     FUTURE
-     ════════════════════════════════════════════════════════════ -->
+FUTURE
+════════════════════════════════════════════════════════════ -->
 <section class="section section--dark section--center" id="future">
   <div class="section-bg" style="background-image: url('assets/future-placeholder.svg'); opacity:0.05;"></div>
   <div class="container">
@@ -298,43 +293,45 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     CONTACT
-     ════════════════════════════════════════════════════════════ -->
+CONTACT — ФОРМА С ОТКЛЮЧЁННОЙ КНОПКОЙ
+════════════════════════════════════════════════════════════ -->
 <section class="section" id="contact">
   <div class="section-bg" style="background-image: url('assets/contact-placeholder.svg'); opacity:0.04;"></div>
   <div class="container">
     <div class="contact__inner">
       <h2 class="section-title" id="contactTitle">Продолжить <span class="highlight">разговор</span></h2>
+
       <div class="section-sub" id="contactSub">
         <p id="contactP1">Спасибо, что уделили время знакомству с моим опытом.</p>
         <p id="contactP2">Если вы считаете, что мой опыт может быть полезен вашей компании или проекту, буду рад продолжить общение.</p>
         <p id="contactP3">Лучшие идеи редко появляются в одиночку. Они рождаются в открытом профессиональном диалоге.</p>
       </div>
 
-<form class="contact-form" id="contactForm" action="https://formspree.io/f/mqevqjqz" method="POST">
-  <div class="contact-form__field">
-    <label for="name" id="nameLabel">Ваше имя</label>
-    <input type="text" id="name" name="name" placeholder="Как к вам обращаться?">
-  </div>
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mqevqjqz" method="POST">
+        <div class="contact-form__field">
+          <label for="name" id="nameLabel">Ваше имя</label>
+          <input type="text" id="name" name="name" placeholder="Как к вам обращаться?">
+        </div>
 
-  <div class="contact-form__field">
-    <label for="email" id="emailLabel">Email</label>
-    <input type="email" id="email" name="email" placeholder="your@email.com">
-  </div>
+        <div class="contact-form__field">
+          <label for="email" id="emailLabel">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com">
+        </div>
 
-  <div class="contact-form__field">
-    <label for="message" id="msgLabel">Ваше сообщение</label>
-    <textarea id="message" name="message" rows="6" placeholder="Представьтесь и расскажите о вашем проекте..."></textarea>
-  </div>
+        <div class="contact-form__field">
+          <label for="message" id="msgLabel">Ваше сообщение</label>
+          <textarea id="message" name="message" rows="6" placeholder="Представьтесь и расскажите о вашем проекте..."></textarea>
+        </div>
 
-  <!-- ⚠️ КНОПКА ОТКЛЮЧЕНА — НЕ РАБОТАЕТ -->
-  <button type="button" class="btn btn--primary btn--large" id="sendBtn" disabled style="opacity:0.5;cursor:not-allowed;">
-    Отправить не удастся 
-  </button>
+        <!-- ⚠️ КНОПКА ОТКЛЮЧЕНА -->
+        <button type="button" class="btn btn--primary btn--large" id="sendBtn" disabled style="opacity:0.5;cursor:not-allowed;">
+          Отправить
+        </button>
 
-  <div class="contact-form__status" id="formStatus"></div>
-</form>
+        <div class="contact-form__status" id="formStatus"></div>
+      </form>
 
+      <!-- Ценности -->
       <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.05);">
         <h3 style="font-size:1.1rem;margin-bottom:1.2rem;color:rgba(255,255,255,0.6);font-weight:500;text-align:center;" id="valuesTitle">Ценности, которые определяют мой подход к работе</h3>
 
@@ -348,124 +345,36 @@
         </div>
       </div>
 
+      <!-- Цитата -->
       <div class="quote-block" style="margin:2.5rem 0 0.5rem;">
         <p id="quote1">«В конечном счёте компании развиваются не благодаря отдельным инструментам.</p>
         <p id="quote2">Они развиваются благодаря людям, способным видеть систему целиком и последовательно делать её лучше.»</p>
       </div>
+
     </div>
   </div>
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     BRANDS SLIDER — ПЕРЕД ПОДВАЛОМ
-     ════════════════════════════════════════════════════════════ -->
+BRANDS SLIDER
+════════════════════════════════════════════════════════════ -->
 <section class="brands-slider" id="brands">
   <div class="container">
     <div class="brands-slider__header">
-      <span class="brands-slider__label">Бренды</span>
-      <span class="brands-slider__sub">С которыми я работал</span>
+      <span class="brands-slider__label" id="brandsLabel">Бренды</span>
+      <span class="brands-slider__sub" id="brandsSub">С которыми я работал</span>
     </div>
     <div class="brands-slider__track-wrapper">
-      <div class="brands-slider__track">
-        <span class="brand-slide">Fender</span>
-        <span class="brand-slide">Yamaha</span>
-        <span class="brand-slide">Marshall</span>
-        <span class="brand-slide">Mesa Boogie</span>
-        <span class="brand-slide">Korg</span>
-        <span class="brand-slide">Vox</span>
-        <span class="brand-slide">Roland</span>
-        <span class="brand-slide">Boss</span>
-        <span class="brand-slide">Kawai</span>
-        <span class="brand-slide">Gibson</span>
-        <span class="brand-slide">Epiphone</span>
-        <span class="brand-slide">Ibanez</span>
-        <span class="brand-slide">Schecter</span>
-        <span class="brand-slide">Orange</span>
-        <span class="brand-slide">Blackstar</span>
-        <span class="brand-slide">JBL</span>
-        <span class="brand-slide">Fishman</span>
-        <span class="brand-slide">Sennheiser</span>
-        <span class="brand-slide">AKG</span>
-        <span class="brand-slide">FBT</span>
-        <span class="brand-slide">Behringer</span>
-        <span class="brand-slide">Ampeg</span>
-        <span class="brand-slide">Line 6</span>
-        <span class="brand-slide">Fender Amps</span>
-        <span class="brand-slide">Jackson</span>
-        <span class="brand-slide">Charvel</span>
-        <span class="brand-slide">Gretsch</span>
-        <span class="brand-slide">Squier</span>
-        <span class="brand-slide">Mono</span>
-        <span class="brand-slide">Takamine</span>
-        <span class="brand-slide">Soundcraft</span>
-        <span class="brand-slide">DBX</span>
-        <span class="brand-slide">DigiTech</span>
-        <span class="brand-slide">TC Electronic</span>
-        <span class="brand-slide">PreSonus</span>
-        <span class="brand-slide">Focusrite</span>
-        <span class="brand-slide">Novation</span>
-        <span class="brand-slide">Akai Professional</span>
-        <span class="brand-slide">Native Instruments</span>
-        <span class="brand-slide">Ableton</span>
-        <span class="brand-slide">Universal Audio</span>
-        <span class="brand-slide">D'Addario</span>
-        <span class="brand-slide">Involight</span>
-        <span class="brand-slide">YME audiotechnik</span>
-        <span class="brand-slide">Anzhee</span>
-        <!-- Дублируем для бесконечности -->
-        <span class="brand-slide">Fender</span>
-        <span class="brand-slide">Yamaha</span>
-        <span class="brand-slide">Marshall</span>
-        <span class="brand-slide">Mesa Boogie</span>
-        <span class="brand-slide">Korg</span>
-        <span class="brand-slide">Vox</span>
-        <span class="brand-slide">Roland</span>
-        <span class="brand-slide">Boss</span>
-        <span class="brand-slide">Kawai</span>
-        <span class="brand-slide">Gibson</span>
-        <span class="brand-slide">Epiphone</span>
-        <span class="brand-slide">Ibanez</span>
-        <span class="brand-slide">Schecter</span>
-        <span class="brand-slide">Orange</span>
-        <span class="brand-slide">Blackstar</span>
-        <span class="brand-slide">JBL</span>
-        <span class="brand-slide">Fishman</span>
-        <span class="brand-slide">Sennheiser</span>
-        <span class="brand-slide">AKG</span>
-        <span class="brand-slide">FBT</span>
-        <span class="brand-slide">Behringer</span>
-        <span class="brand-slide">Ampeg</span>
-        <span class="brand-slide">Line 6</span>
-        <span class="brand-slide">Fender Amps</span>
-        <span class="brand-slide">Jackson</span>
-        <span class="brand-slide">Charvel</span>
-        <span class="brand-slide">Gretsch</span>
-        <span class="brand-slide">Squier</span>
-        <span class="brand-slide">Mono</span>
-        <span class="brand-slide">Takamine</span>
-        <span class="brand-slide">Soundcraft</span>
-        <span class="brand-slide">DBX</span>
-        <span class="brand-slide">DigiTech</span>
-        <span class="brand-slide">TC Electronic</span>
-        <span class="brand-slide">PreSonus</span>
-        <span class="brand-slide">Focusrite</span>
-        <span class="brand-slide">Novation</span>
-        <span class="brand-slide">Akai Professional</span>
-        <span class="brand-slide">Native Instruments</span>
-        <span class="brand-slide">Ableton</span>
-        <span class="brand-slide">Universal Audio</span>
-        <span class="brand-slide">D'Addario</span>
-        <span class="brand-slide">Involight</span>
-        <span class="brand-slide">YME audiotechnik</span>
-        <span class="brand-slide">Anzhee</span>
+      <div class="brands-slider__track" id="brandsTrack">
+        <!-- заполняется из JS -->
       </div>
     </div>
   </div>
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     FOOTER
-     ════════════════════════════════════════════════════════════ -->
+FOOTER
+════════════════════════════════════════════════════════════ -->
 <footer class="footer">
   <div class="container footer__inner">
     <div class="footer__left" id="footerYear">© 2026</div>
@@ -480,8 +389,8 @@
 </footer>
 
 <!-- ════════════════════════════════════════════════════════════
-     BACK TO TOP
-     ════════════════════════════════════════════════════════════ -->
+BACK TO TOP
+════════════════════════════════════════════════════════════ -->
 <button class="back-to-top" id="backToTop" aria-label="Наверх">
   <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
