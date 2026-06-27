@@ -537,6 +537,7 @@ function renderCases(preserveScroll = false) {
   const d = getLangData();
   const perspective = currentPerspective;
   const scrollY = preserveScroll ? window.scrollY : 0;
+  
   let title, subtitle;
   if (perspective === 'business') {
     title = d.caseBusinessTitle;
@@ -548,13 +549,15 @@ function renderCases(preserveScroll = false) {
     title = d.caseStrategyTitle;
     subtitle = d.caseStrategySub;
   }
+  
   document.getElementById('casesTitle').innerHTML = title;
   document.getElementById('casesSub').innerHTML = `<p>${subtitle}</p>`;
   document.getElementById('heroThought').querySelector('p').textContent = d.caseThoughts[perspective] || d.caseThoughts.business;
-
+  
   const cases = casesList[perspective] || casesList.business;
   const container = document.getElementById('casesContainer');
   const blockLabels = getCaseBlocks();
+  
   let html = '<div class="cases-list stagger">';
   cases.forEach(c => {
     const b = c.blocks[currentLang] || c.blocks.ru;
@@ -583,9 +586,10 @@ function renderCases(preserveScroll = false) {
     `;
   });
   html += '</div>';
-
+  
   container.classList.remove('fade-in');
   container.classList.add('fade-out');
+  
   setTimeout(() => {
     container.innerHTML = html;
     container.classList.remove('fade-out');
@@ -618,12 +622,18 @@ function renderAll() {
 
 function switchPerspective(perspective) {
   if (perspective === currentPerspective) return;
+  
   const scrollY = window.scrollY;
   currentPerspective = perspective;
+  
+  // Обновляем активный класс у кнопок
   document.querySelectorAll('.perspective-option').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.perspective-option[data-perspective="${perspective}"]`).classList.add('active');
+  const activeBtn = document.querySelector(`.perspective-option[data-perspective="${perspective}"]`);
+  if (activeBtn) activeBtn.classList.add('active');
+  
   applyTheme(perspective);
   renderCases(true);
+  
   setTimeout(() => {
     const section = document.getElementById('cases');
     if (section) {
@@ -631,6 +641,7 @@ function switchPerspective(perspective) {
       window.scrollTo({ top, behavior: 'smooth' });
     }
   }, 220);
+  
   try { localStorage.setItem('executive_perspective', perspective); } catch (e) {}
 }
 
@@ -650,29 +661,40 @@ function applyTheme(perspective) {
     marketing: 'rgba(74,158,255,0.12)',
     strategy: 'rgba(167,139,250,0.12)'
   };
+  
   const accent = accentMap[perspective] || '#C9A84C';
   const glow = glowMap[perspective] || 'rgba(201,168,76,0.20)';
   const border = borderMap[perspective] || 'rgba(201,168,76,0.12)';
-
+  
   document.body.className = `perspective-${perspective}`;
   document.documentElement.style.setProperty('--accent', accent);
   document.documentElement.style.setProperty('--accent-glow', glow);
   document.documentElement.style.setProperty('--accent-border', border);
-
-  document.querySelector('.perspective-switch').style.borderColor = border;
+  
+  const switchEl = document.querySelector('.perspective-switch');
+  if (switchEl) switchEl.style.borderColor = border;
+  
   document.querySelectorAll('.btn--primary').forEach(el => { el.style.background = accent; });
-  document.querySelectorAll('.nav a').forEach(el => { el.style.setProperty('--nav-underline', accent); });
+  
   syncAccentStyles();
 }
 
 function switchLang(lang) {
   if (lang === currentLang) return;
   currentLang = lang;
+  
   document.title = lang === 'ru' ? data.ru.pageTitle : data.en.pageTitle;
-  document.getElementById('langActive').textContent = lang === 'ru' ? 'Русский' : 'English';
-  document.getElementById('langInactive').textContent = lang === 'ru' ? 'English' : 'Русский';
-  document.getElementById('langActiveF').textContent = lang === 'ru' ? 'Русский' : 'English';
-  document.getElementById('langInactiveF').textContent = lang === 'ru' ? 'English' : 'Русский';
+  
+  const langMap = {
+    ru: { active: 'Русский', inactive: 'English' },
+    en: { active: 'English', inactive: 'Русский' }
+  };
+  
+  document.getElementById('langActive').textContent = langMap[lang].active;
+  document.getElementById('langInactive').textContent = langMap[lang].inactive;
+  document.getElementById('langActiveF').textContent = langMap[lang].active;
+  document.getElementById('langInactiveF').textContent = langMap[lang].inactive;
+  
   renderAll();
   try { localStorage.setItem('executive_lang', lang); } catch (e) {}
 }
@@ -680,36 +702,47 @@ function switchLang(lang) {
 function loadSaved() {
   let savedLang = 'ru';
   let savedPerspective = 'business';
+  
   try {
     const sl = localStorage.getItem('executive_lang');
     if (sl === 'ru' || sl === 'en') savedLang = sl;
     const sp = localStorage.getItem('executive_perspective');
     if (sp === 'business' || sp === 'marketing' || sp === 'strategy') savedPerspective = sp;
   } catch (e) {}
+  
   currentLang = savedLang;
   currentPerspective = savedPerspective;
+  
   document.title = savedLang === 'ru' ? data.ru.pageTitle : data.en.pageTitle;
-  document.getElementById('langActive').textContent = savedLang === 'ru' ? 'Русский' : 'English';
-  document.getElementById('langInactive').textContent = savedLang === 'ru' ? 'English' : 'Русский';
-  document.getElementById('langActiveF').textContent = savedLang === 'ru' ? 'Русский' : 'English';
-  document.getElementById('langInactiveF').textContent = savedLang === 'ru' ? 'English' : 'Русский';
+  
+  const langMap = {
+    ru: { active: 'Русский', inactive: 'English' },
+    en: { active: 'English', inactive: 'Русский' }
+  };
+  
+  document.getElementById('langActive').textContent = langMap[savedLang].active;
+  document.getElementById('langInactive').textContent = langMap[savedLang].inactive;
+  document.getElementById('langActiveF').textContent = langMap[savedLang].active;
+  document.getElementById('langInactiveF').textContent = langMap[savedLang].inactive;
+  
+  // Активируем правильную кнопку перспективы
   document.querySelectorAll('.perspective-option').forEach(b => b.classList.remove('active'));
   const btn = document.querySelector(`.perspective-option[data-perspective="${savedPerspective}"]`);
   if (btn) btn.classList.add('active');
+  
   applyTheme(savedPerspective);
   renderAll();
 }
 
 // ============================================================
-// 6. АНИМАЦИЯ ДЛЯ ОБЛАКА СВЯЗЕЙ (ЦИФРОВОЙ СЛЕД)
+// 6. АНИМАЦИЯ ДЛЯ ОБЛАКА СВЯЗЕЙ
 // ============================================================
 
 function initMetricsCloud() {
   const nodes = document.querySelectorAll('.metric-node');
   const lines = document.querySelectorAll('.cloud-line');
-
   if (!nodes.length) return;
-
+  
   // Появление узлов
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -721,17 +754,13 @@ function initMetricsCloud() {
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -30px 0px'
-  });
-
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  
   nodes.forEach(node => observer.observe(node));
-
+  
   // Активация линий после появления 60% узлов
   let visibleCount = 0;
   const totalNodes = nodes.length;
-
   nodes.forEach(node => {
     const checkObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -749,119 +778,89 @@ function initMetricsCloud() {
 }
 
 // ============================================================
-// 7. УПРАВЛЕНИЕ СКРЫТИЕМ ПЕРСПЕКТИВ НА МОБИЛЬНЫХ
+// 7. ИНИЦИАЛИЗАЦИЯ
 // ============================================================
 
-function initPerspectiveHide() {
-  const wrapper = document.getElementById('perspectiveWrapper');
-  if (!wrapper) return;
-
-  let lastScrollY = window.scrollY;
-  let ticking = false;
-
-  const update = () => {
-    const currentScrollY = window.scrollY;
-    const isMobile = window.innerWidth <= 768;
-
-    if (!isMobile) {
-      wrapper.classList.remove('hidden');
-      lastScrollY = currentScrollY;
-      ticking = false;
-      return;
-    }
-
-    if (currentScrollY > 100) {
-      if (currentScrollY > lastScrollY) {
-        wrapper.classList.add('hidden');
-      } else {
-        wrapper.classList.remove('hidden');
-      }
-    } else {
-      wrapper.classList.remove('hidden');
-    }
-
-    lastScrollY = currentScrollY;
-    ticking = false;
-  };
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      requestAnimationFrame(update);
-      ticking = true;
-    }
-  });
-
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) {
-      wrapper.classList.remove('hidden');
-    }
-  });
-
-  // Показываем при скролле вверх после скрытия
-  let lastScrollUp = 0;
-  window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    if (current < lastScrollUp && current > 100) {
-      wrapper.classList.remove('hidden');
-    }
-    lastScrollUp = current;
-  });
-}
-
-// ============================================================
-// 8. ИНИЦИАЛИЗАЦИЯ
-// ============================================================
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Переключение языка
-  document.getElementById('langSwitch').addEventListener('click', () => {
-    switchLang(currentLang === 'ru' ? 'en' : 'ru');
-  });
-  document.getElementById('langSwitchFooter').addEventListener('click', () => {
-    switchLang(currentLang === 'ru' ? 'en' : 'ru');
-  });
-
-  // Переключение перспективы
-  document.querySelectorAll('.perspective-option').forEach(btn => {
-    btn.addEventListener('click', (event) => {
-      event.preventDefault();
-      event.stopPropagation();
-      btn.blur();
-      switchPerspective(btn.dataset.perspective);
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // ============================================================
+  // ПЕРЕКЛЮЧЕНИЕ ПЕРСПЕКТИВ (ЕДИНЫЙ ОБРАБОТЧИК)
+  // ============================================================
+  const buttons = document.querySelectorAll('.perspective-option');
+  
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const perspective = this.dataset.perspective;
+      if (perspective === currentPerspective) return;
+      
+      // Мгновенно обновляем UI
+      buttons.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      
+      // Переключаем контент
+      switchPerspective(perspective);
     });
   });
-
-  // Burger
+  
+  // ============================================================
+  // ЗАГРУЗКА СОХРАНЁННЫХ НАСТРОЕК
+  // ============================================================
+  loadSaved();
+  
+  // ============================================================
+  // ЯЗЫК
+  // ============================================================
+  document.getElementById('langSwitch').addEventListener('click', function() {
+    switchLang(currentLang === 'ru' ? 'en' : 'ru');
+  });
+  
+  document.getElementById('langSwitchFooter').addEventListener('click', function() {
+    switchLang(currentLang === 'ru' ? 'en' : 'ru');
+  });
+  
+  // ============================================================
+  // BURGER
+  // ============================================================
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
-  burger.addEventListener('click', () => {
+  
+  burger.addEventListener('click', function() {
     burger.classList.toggle('active');
     nav.classList.toggle('open');
   });
-  document.querySelectorAll('.nav a').forEach(link => {
-    link.addEventListener('click', () => {
+  
+  document.querySelectorAll('.nav a').forEach(function(link) {
+    link.addEventListener('click', function() {
       burger.classList.remove('active');
       nav.classList.remove('open');
     });
   });
-
-  // Back to top
+  
+  // ============================================================
+  // BACK TO TOP
+  // ============================================================
   const backBtn = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
+  window.addEventListener('scroll', function() {
     backBtn.classList.toggle('visible', window.pageYOffset > 400);
   });
-  backBtn.addEventListener('click', () => {
+  backBtn.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-
-  // Header scroll
+  
+  // ============================================================
+  // HEADER SCROLL
+  // ============================================================
   const header = document.getElementById('header');
-  window.addEventListener('scroll', () => {
+  window.addEventListener('scroll', function() {
     header.classList.toggle('scrolled', window.pageYOffset > 50);
   });
-
-  // Smooth scroll
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  
+  // ============================================================
+  // SMOOTH SCROLL
+  // ============================================================
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       const target = document.querySelector(this.getAttribute('href'));
@@ -873,54 +872,41 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-
+  
   // ============================================================
-  // ФОРМА — ОТПРАВКА ЧЕРЕЗ FORMPREE (AJAX)
+  // ФОРМА
   // ============================================================
-  // Инициализация Formspree через глобальный объект
-  window.formspree = window.formspree || function () {
+  window.formspree = window.formspree || function() {
     (formspree.q = formspree.q || []).push(arguments);
   };
-  formspree('initForm', {
-    formElement: '#contactForm',
-    formId: 'mqevqjqz'
-  });
-
-  // Дополнительный статус для обратной связи (на случай, если нужно)
-  const form = document.getElementById('contactForm');
-  const statusEl = document.getElementById('formStatus');
-
-  if (form && statusEl) {
-    // Formspree сам управляет состоянием через data-fs-* атрибуты,
-    // но мы можем добавить дополнительный слушатель для совместимости
-    form.addEventListener('fs:success', function() {
-      statusEl.textContent = '✅ Сообщение успешно отправлено!';
-      statusEl.className = 'contact-form__status';
-    });
-    form.addEventListener('fs:error', function(e) {
-      statusEl.textContent = '❌ Ошибка при отправке. Попробуйте позже.';
-      statusEl.className = 'contact-form__status error';
+  
+  if (document.getElementById('contactForm')) {
+    formspree('initForm', {
+      formElement: '#contactForm',
+      formId: 'mqevqjqz'
     });
   }
-
-  loadSaved();
-
-  // Scroll reveal для остальных элементов
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  
+  // ============================================================
+  // SCROLL REVEAL
+  // ============================================================
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal, .stagger, .competency-card, .case-card, .value-item, .card, .competency-grid, .values-grid, .grid-2, .grid-3')
-    .forEach(el => observer.observe(el));
-
-  // Анимация для облака связей
+  
+  document.querySelectorAll('.reveal, .stagger, .competency-card, .case-card, .value-item, .card')
+    .forEach(function(el) {
+      observer.observe(el);
+    });
+  
+  // ============================================================
+  // ОБЛАКО СВЯЗЕЙ
+  // ============================================================
   initMetricsCloud();
-
-  // Управление скрытием перспектив на мобильных
-  initPerspectiveHide();
-
-  console.log('✅ Executive Casebook v15 — Formspree + облако связей');
+  
+  console.log('✅ Executive Casebook v16 — кнопки работают мгновенно');
 });
