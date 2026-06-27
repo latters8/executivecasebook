@@ -1,5 +1,5 @@
 // ============================================================
-// 1. ДАННЫЕ: ПЕРСПЕКТИВЫ + ЯЗЫКИ
+// 1. ДАННЫЕ
 // ============================================================
 
 const data = {
@@ -102,7 +102,9 @@ const data = {
       business: { task: 'Задача', solution: 'Бизнес-решение', result: 'Результат' },
       marketing: { task: 'Задача', solution: 'Маркетинг-решение', result: 'Результат' },
       strategy: { task: 'Стратегическая задача', solution: 'Стратегическое решение', result: 'Результат' }
-    }
+    },
+    brandsLabel: 'Бренды',
+    brandsSub: 'С которыми я работал'
   },
   en: {
     nameLabel: 'Your name',
@@ -203,7 +205,9 @@ const data = {
       business: { task: 'Task', solution: 'Business solution', result: 'Result' },
       marketing: { task: 'Task', solution: 'Marketing solution', result: 'Result' },
       strategy: { task: 'Strategic task', solution: 'Strategic solution', result: 'Result' }
-    }
+    },
+    brandsLabel: 'Brands',
+    brandsSub: "I've worked with"
   }
 };
 
@@ -418,6 +422,19 @@ const casesList = {
   ]
 };
 
+// Бренды для слайдера
+const brandsList = [
+  'Fender', 'Yamaha', 'Marshall', 'Mesa Boogie', 'Korg', 'Vox',
+  'Roland', 'Boss', 'Kawai', 'Gibson', 'Epiphone', 'Ibanez',
+  'Schecter', 'Orange', 'Blackstar', 'JBL', 'Fishman', 'Sennheiser',
+  'AKG', 'FBT', 'Behringer', 'Ampeg', 'Line 6', 'Fender Amps',
+  'Jackson', 'Charvel', 'Gretsch', 'Squier', 'Mono', 'Takamine',
+  'Soundcraft', 'DBX', 'DigiTech', 'TC Electronic', 'PreSonus',
+  'Focusrite', 'Novation', 'Akai Professional', 'Native Instruments',
+  'Ableton', 'Universal Audio', "D'Addario", 'Involight',
+  'YME audiotechnik', 'Anzhee'
+];
+
 // ============================================================
 // 3. ЛОГИКА ПРИЛОЖЕНИЯ
 // ============================================================
@@ -533,11 +550,22 @@ function renderContact() {
   document.getElementById('quote2').textContent = d.quote2;
 }
 
+function renderBrands() {
+  const d = getLangData();
+  document.getElementById('brandsLabel').textContent = d.brandsLabel;
+  document.getElementById('brandsSub').textContent = d.brandsSub;
+
+  const track = document.getElementById('brandsTrack');
+  // Дублируем список для бесконечной анимации
+  const doubled = [...brandsList, ...brandsList];
+  track.innerHTML = doubled.map(brand => `<span class="brand-slide">${brand}</span>`).join('');
+}
+
 function renderCases(preserveScroll = false) {
   const d = getLangData();
   const perspective = currentPerspective;
   const scrollY = preserveScroll ? window.scrollY : 0;
-  
+
   let title, subtitle;
   if (perspective === 'business') {
     title = d.caseBusinessTitle;
@@ -549,15 +577,15 @@ function renderCases(preserveScroll = false) {
     title = d.caseStrategyTitle;
     subtitle = d.caseStrategySub;
   }
-  
+
   document.getElementById('casesTitle').innerHTML = title;
   document.getElementById('casesSub').innerHTML = `<p>${subtitle}</p>`;
   document.getElementById('heroThought').querySelector('p').textContent = d.caseThoughts[perspective] || d.caseThoughts.business;
-  
+
   const cases = casesList[perspective] || casesList.business;
   const container = document.getElementById('casesContainer');
   const blockLabels = getCaseBlocks();
-  
+
   let html = '<div class="cases-list stagger">';
   cases.forEach(c => {
     const b = c.blocks[currentLang] || c.blocks.ru;
@@ -586,10 +614,10 @@ function renderCases(preserveScroll = false) {
     `;
   });
   html += '</div>';
-  
+
   container.classList.remove('fade-in');
   container.classList.add('fade-out');
-  
+
   setTimeout(() => {
     container.innerHTML = html;
     container.classList.remove('fade-out');
@@ -612,6 +640,7 @@ function renderAll() {
   renderCompetencies();
   renderFuture();
   renderContact();
+  renderBrands();
   renderCases();
   syncAccentStyles();
 }
@@ -622,18 +651,17 @@ function renderAll() {
 
 function switchPerspective(perspective) {
   if (perspective === currentPerspective) return;
-  
+
   const scrollY = window.scrollY;
   currentPerspective = perspective;
-  
-  // Обновляем активный класс у кнопок
+
   document.querySelectorAll('.perspective-option').forEach(b => b.classList.remove('active'));
   const activeBtn = document.querySelector(`.perspective-option[data-perspective="${perspective}"]`);
   if (activeBtn) activeBtn.classList.add('active');
-  
+
   applyTheme(perspective);
   renderCases(true);
-  
+
   setTimeout(() => {
     const section = document.getElementById('cases');
     if (section) {
@@ -641,7 +669,7 @@ function switchPerspective(perspective) {
       window.scrollTo({ top, behavior: 'smooth' });
     }
   }, 220);
-  
+
   try { localStorage.setItem('executive_perspective', perspective); } catch (e) {}
 }
 
@@ -661,40 +689,40 @@ function applyTheme(perspective) {
     marketing: 'rgba(74,158,255,0.12)',
     strategy: 'rgba(167,139,250,0.12)'
   };
-  
+
   const accent = accentMap[perspective] || '#C9A84C';
   const glow = glowMap[perspective] || 'rgba(201,168,76,0.20)';
   const border = borderMap[perspective] || 'rgba(201,168,76,0.12)';
-  
+
   document.body.className = `perspective-${perspective}`;
   document.documentElement.style.setProperty('--accent', accent);
   document.documentElement.style.setProperty('--accent-glow', glow);
   document.documentElement.style.setProperty('--accent-border', border);
-  
+
   const switchEl = document.querySelector('.perspective-switch');
   if (switchEl) switchEl.style.borderColor = border;
-  
+
   document.querySelectorAll('.btn--primary').forEach(el => { el.style.background = accent; });
-  
+
   syncAccentStyles();
 }
 
 function switchLang(lang) {
   if (lang === currentLang) return;
   currentLang = lang;
-  
+
   document.title = lang === 'ru' ? data.ru.pageTitle : data.en.pageTitle;
-  
+
   const langMap = {
     ru: { active: 'Русский', inactive: 'English' },
     en: { active: 'English', inactive: 'Русский' }
   };
-  
+
   document.getElementById('langActive').textContent = langMap[lang].active;
   document.getElementById('langInactive').textContent = langMap[lang].inactive;
   document.getElementById('langActiveF').textContent = langMap[lang].active;
   document.getElementById('langInactiveF').textContent = langMap[lang].inactive;
-  
+
   renderAll();
   try { localStorage.setItem('executive_lang', lang); } catch (e) {}
 }
@@ -702,47 +730,48 @@ function switchLang(lang) {
 function loadSaved() {
   let savedLang = 'ru';
   let savedPerspective = 'business';
-  
+
   try {
     const sl = localStorage.getItem('executive_lang');
     if (sl === 'ru' || sl === 'en') savedLang = sl;
     const sp = localStorage.getItem('executive_perspective');
     if (sp === 'business' || sp === 'marketing' || sp === 'strategy') savedPerspective = sp;
   } catch (e) {}
-  
+
   currentLang = savedLang;
   currentPerspective = savedPerspective;
-  
+
   document.title = savedLang === 'ru' ? data.ru.pageTitle : data.en.pageTitle;
-  
+
   const langMap = {
     ru: { active: 'Русский', inactive: 'English' },
     en: { active: 'English', inactive: 'Русский' }
   };
-  
+
   document.getElementById('langActive').textContent = langMap[savedLang].active;
   document.getElementById('langInactive').textContent = langMap[savedLang].inactive;
   document.getElementById('langActiveF').textContent = langMap[savedLang].active;
   document.getElementById('langInactiveF').textContent = langMap[savedLang].inactive;
-  
-  // Активируем правильную кнопку перспективы
+
   document.querySelectorAll('.perspective-option').forEach(b => b.classList.remove('active'));
   const btn = document.querySelector(`.perspective-option[data-perspective="${savedPerspective}"]`);
   if (btn) btn.classList.add('active');
-  
+
   applyTheme(savedPerspective);
   renderAll();
 }
 
 // ============================================================
-// 6. АНИМАЦИЯ ДЛЯ ОБЛАКА СВЯЗЕЙ
+// 6. АНИМАЦИЯ ДЛЯ ПАУТИНЫ
 // ============================================================
 
 function initMetricsCloud() {
   const nodes = document.querySelectorAll('.metric-node');
   const lines = document.querySelectorAll('.cloud-line');
+  const orbits = document.querySelectorAll('.cloud-orbit');
+
   if (!nodes.length) return;
-  
+
   // Появление узлов
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -755,10 +784,10 @@ function initMetricsCloud() {
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-  
+
   nodes.forEach(node => observer.observe(node));
-  
-  // Активация линий после появления 60% узлов
+
+  // Активация линий и орбит после появления 60% узлов
   let visibleCount = 0;
   const totalNodes = nodes.length;
   nodes.forEach(node => {
@@ -768,6 +797,7 @@ function initMetricsCloud() {
           visibleCount++;
           if (visibleCount >= Math.ceil(totalNodes * 0.6)) {
             lines.forEach(line => line.classList.add('active'));
+            orbits.forEach(orbit => orbit.classList.add('active'));
           }
           checkObserver.unobserve(entry.target);
         }
@@ -782,62 +812,60 @@ function initMetricsCloud() {
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', function() {
-  
+
   // ============================================================
-  // ПЕРЕКЛЮЧЕНИЕ ПЕРСПЕКТИВ (ЕДИНЫЙ ОБРАБОТЧИК)
+  // ПЕРЕКЛЮЧЕНИЕ ПЕРСПЕКТИВ
   // ============================================================
   const buttons = document.querySelectorAll('.perspective-option');
-  
+
   buttons.forEach(function(btn) {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
-      
+
       const perspective = this.dataset.perspective;
       if (perspective === currentPerspective) return;
-      
-      // Мгновенно обновляем UI
+
       buttons.forEach(b => b.classList.remove('active'));
       this.classList.add('active');
-      
-      // Переключаем контент
+
       switchPerspective(perspective);
     });
   });
-  
+
   // ============================================================
   // ЗАГРУЗКА СОХРАНЁННЫХ НАСТРОЕК
   // ============================================================
   loadSaved();
-  
+
   // ============================================================
   // ЯЗЫК
   // ============================================================
   document.getElementById('langSwitch').addEventListener('click', function() {
     switchLang(currentLang === 'ru' ? 'en' : 'ru');
   });
-  
+
   document.getElementById('langSwitchFooter').addEventListener('click', function() {
     switchLang(currentLang === 'ru' ? 'en' : 'ru');
   });
-  
+
   // ============================================================
   // BURGER
   // ============================================================
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
-  
+
   burger.addEventListener('click', function() {
     burger.classList.toggle('active');
     nav.classList.toggle('open');
   });
-  
+
   document.querySelectorAll('.nav a').forEach(function(link) {
     link.addEventListener('click', function() {
       burger.classList.remove('active');
       nav.classList.remove('open');
     });
   });
-  
+
   // ============================================================
   // BACK TO TOP
   // ============================================================
@@ -848,7 +876,7 @@ document.addEventListener('DOMContentLoaded', function() {
   backBtn.addEventListener('click', function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
-  
+
   // ============================================================
   // HEADER SCROLL
   // ============================================================
@@ -856,7 +884,7 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('scroll', function() {
     header.classList.toggle('scrolled', window.pageYOffset > 50);
   });
-  
+
   // ============================================================
   // SMOOTH SCROLL
   // ============================================================
@@ -872,21 +900,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-  
-  // ============================================================
-  // ФОРМА
-  // ============================================================
-  window.formspree = window.formspree || function() {
-    (formspree.q = formspree.q || []).push(arguments);
-  };
-  
-  if (document.getElementById('contactForm')) {
-    formspree('initForm', {
-      formElement: '#contactForm',
-      formId: 'mqevqjqz'
-    });
-  }
-  
+
   // ============================================================
   // SCROLL REVEAL
   // ============================================================
@@ -897,16 +911,16 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  
+
   document.querySelectorAll('.reveal, .stagger, .competency-card, .case-card, .value-item, .card')
     .forEach(function(el) {
       observer.observe(el);
     });
-  
+
   // ============================================================
-  // ОБЛАКО СВЯЗЕЙ
+  // ПАУТИНА
   // ============================================================
   initMetricsCloud();
-  
-  console.log('✅ Executive Casebook v16 — кнопки работают мгновенно');
+
+  console.log('✅ Executive Casebook v17 — с паутиной и английским заголовком брендов');
 });
