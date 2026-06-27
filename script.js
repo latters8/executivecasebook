@@ -436,7 +436,7 @@ function syncAccentStyles() {
   const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#C9A84C';
   document.querySelectorAll('.highlight').forEach(el => { el.style.color = accent; });
   document.querySelectorAll('.hero-metric__number').forEach(el => { el.style.color = accent; });
-  document.querySelectorAll('.metric-tile__number').forEach(el => { el.style.color = accent; });
+  document.querySelectorAll('.metric-node__number').forEach(el => { el.style.color = accent; });
   document.querySelectorAll('.competency-card__num').forEach(el => { el.style.color = accent; });
 }
 
@@ -701,20 +701,23 @@ function loadSaved() {
 }
 
 // ============================================================
-// 6. АНИМАЦИЯ ДЛЯ NOTION-КАРТОЧЕК
+// 6. АНИМАЦИЯ ДЛЯ ОБЛАКА СВЯЗЕЙ (ЦИФРОВОЙ СЛЕД)
 // ============================================================
 
-function initNotionCards() {
-  const cards = document.querySelectorAll('.notion-card');
-  if (!cards.length) return;
+function initMetricsCloud() {
+  const nodes = document.querySelectorAll('.metric-node');
+  const lines = document.querySelectorAll('.cloud-line');
 
+  if (!nodes.length) return;
+
+  // Появление узлов
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
+    entries.forEach(entry => {
       if (entry.isIntersecting) {
         const delay = parseInt(entry.target.dataset.delay) || 0;
         setTimeout(() => {
           entry.target.classList.add('visible');
-        }, delay * 80);
+        }, delay * 100);
         observer.unobserve(entry.target);
       }
     });
@@ -723,7 +726,26 @@ function initNotionCards() {
     rootMargin: '0px 0px -30px 0px'
   });
 
-  cards.forEach(card => observer.observe(card));
+  nodes.forEach(node => observer.observe(node));
+
+  // Активация линий после появления 60% узлов
+  let visibleCount = 0;
+  const totalNodes = nodes.length;
+
+  nodes.forEach(node => {
+    const checkObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          visibleCount++;
+          if (visibleCount >= Math.ceil(totalNodes * 0.6)) {
+            lines.forEach(line => line.classList.add('active'));
+          }
+          checkObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    checkObserver.observe(node);
+  });
 }
 
 // ============================================================
@@ -853,17 +875,31 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============================================================
-  // ФОРМА — ОТПРАВКА ЧЕРЕЗ FORMPREE (без fetch)
+  // ФОРМА — ОТПРАВКА ЧЕРЕЗ FORMPREE (AJAX)
   // ============================================================
+  // Инициализация Formspree через глобальный объект
+  window.formspree = window.formspree || function () {
+    (formspree.q = formspree.q || []).push(arguments);
+  };
+  formspree('initForm', {
+    formElement: '#contactForm',
+    formId: 'mqevqjqz'
+  });
+
+  // Дополнительный статус для обратной связи (на случай, если нужно)
   const form = document.getElementById('contactForm');
   const statusEl = document.getElementById('formStatus');
 
-  if (form) {
-    // Просто показываем статус, форма отправляется стандартным способом через action
-    form.addEventListener('submit', function(e) {
-      // Не отменяем отправку — форма уходит на Formspree
-      statusEl.textContent = '⏳ Отправка...';
+  if (form && statusEl) {
+    // Formspree сам управляет состоянием через data-fs-* атрибуты,
+    // но мы можем добавить дополнительный слушатель для совместимости
+    form.addEventListener('fs:success', function() {
+      statusEl.textContent = '✅ Сообщение успешно отправлено!';
       statusEl.className = 'contact-form__status';
+    });
+    form.addEventListener('fs:error', function(e) {
+      statusEl.textContent = '❌ Ошибка при отправке. Попробуйте позже.';
+      statusEl.className = 'contact-form__status error';
     });
   }
 
@@ -880,11 +916,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.reveal, .stagger, .competency-card, .case-card, .value-item, .card, .competency-grid, .values-grid, .grid-2, .grid-3')
     .forEach(el => observer.observe(el));
 
-  // Анимация для Notion-карточек
-  initNotionCards();
+  // Анимация для облака связей
+  initMetricsCloud();
 
   // Управление скрытием перспектив на мобильных
   initPerspectiveHide();
 
-  console.log('✅ Executive Casebook v15 — Formspree подключён');
+  console.log('✅ Executive Casebook v15 — Formspree + облако связей');
 });
