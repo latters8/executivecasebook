@@ -1932,3 +1932,188 @@ REDUCED MOTION
     transition-duration: 0.01ms !important;
   }
 }
+/* ============================================================
+NEW ANIMATIONS — PULSE, SHIMMER, WAVE, ROTATE, FALL
+============================================================ */
+
+/* 1. ПУЛЬСАЦИЯ — для текста "Выберите перспективу" */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.04); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+.pulse-text {
+  display: inline-block;
+  animation: pulse 2.5s ease-in-out infinite;
+  color: var(--accent, #C9A84C) !important;
+}
+
+/* 2. МЕРЦАНИЕ (SHIMMER) — для заголовков */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, 
+    var(--accent, #C9A84C) 0%, 
+    #ffffff 30%, 
+    #ffffff 50%, 
+    #ffffff 70%, 
+    var(--accent, #C9A84C) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* 3. ВОЛНА — для фона */
+@keyframes wave {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.wave-bg {
+  background: linear-gradient(
+    135deg,
+    rgba(10, 10, 10, 0.95) 0%,
+    rgba(20, 20, 30, 0.9) 25%,
+    rgba(10, 10, 10, 0.95) 50%,
+    rgba(20, 20, 30, 0.9) 75%,
+    rgba(10, 10, 10, 0.95) 100%
+  );
+  background-size: 400% 400%;
+  animation: wave 12s ease-in-out infinite;
+}
+
+/* 4. ВРАЩЕНИЕ — для карточек */
+@keyframes rotateIn {
+  0% {
+    opacity: 0;
+    transform: rotate(-3deg) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.rotate-card {
+  animation: rotateIn 0.6s ease forwards;
+}
+
+/* 5. ПАДАЮЩИЕ ЧАСТИЦЫ */
+@keyframes fall {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+.particle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: var(--accent, #C9A84C);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+}
+
+.particle:nth-child(1) { left: 10%; animation: fall 8s linear infinite; animation-delay: 0s; }
+.particle:nth-child(2) { left: 20%; animation: fall 9s linear infinite; animation-delay: 1s; }
+.particle:nth-child(3) { left: 30%; animation: fall 7s linear infinite; animation-delay: 2s; }
+.particle:nth-child(4) { left: 40%; animation: fall 10s linear infinite; animation-delay: 0.5s; }
+.particle:nth-child(5) { left: 50%; animation: fall 8.5s linear infinite; animation-delay: 1.5s; }
+.particle:nth-child(6) { left: 60%; animation: fall 9.5s linear infinite; animation-delay: 3s; }
+.particle:nth-child(7) { left: 70%; animation: fall 7.5s linear infinite; animation-delay: 0.8s; }
+.particle:nth-child(8) { left: 80%; animation: fall 8.2s linear infinite; animation-delay: 2.2s; }
+.particle:nth-child(9) { left: 90%; animation: fall 9.8s linear infinite; animation-delay: 1.2s; }
+
+/* 6. ВИДЕОФОН ДЛЯ СЕКЦИИ ЦИФРОВОЙ СЛЕД */
+.section--video {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: 0;
+}
+
+.section-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.55);
+  z-index: 1;
+}
+
+.section--video .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Отключаем видео на мобильных */
+@media (max-width: 768px) {
+  .section-bg-video {
+    display: none;
+  }
+  .section--video .section-bg {
+    display: block;
+    opacity: 0.1;
+  }
+}
+
+/* 7. ГРАДИЕНТНЫЙ ТЕКСТ ДЛЯ ЗАГОЛОВКОВ */
+.gradient-text {
+  background: linear-gradient(135deg, var(--accent, #C9A84C), #ffffff, var(--accent, #C9A84C));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s ease-in-out infinite;
+}
+
+/* 8. ПЛАВНОЕ ПОЯВЛЕНИЕ С ЗАДЕРЖКОЙ ДЛЯ КАРТОЧЕК */
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease forwards;
+}
+
+.slide-up:nth-child(1) { animation-delay: 0.05s; }
+.slide-up:nth-child(2) { animation-delay: 0.10s; }
+.slide-up:nth-child(3) { animation-delay: 0.15s; }
+.slide-up:nth-child(4) { animation-delay: 0.20s; }
+.slide-up:nth-child(5) { animation-delay: 0.25s; }
+.slide-up:nth-child(6) { animation-delay: 0.30s; }
+.slide-up:nth-child(7) { animation-delay: 0.35s; }
+.slide-up:nth-child(8) { animation-delay: 0.40s; }
