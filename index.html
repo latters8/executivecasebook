@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="styles.css">
 
   <!-- Formspree AJAX -->
-  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+ <!-- <script src="https://unpkg.com/@formspree/ajax@1" defer></script> -->
 </head>
 <body>
 
@@ -311,39 +311,29 @@
         <p id="contactP3">Лучшие идеи редко появляются в одиночку. Они рождаются в открытом профессиональном диалоге.</p>
       </div>
 
-      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mqevqjqz" method="POST">
-        <div class="contact-form__field">
-          <label for="name" id="nameLabel">Ваше имя</label>
-          <input type="text" id="name" name="name" placeholder="Как к вам обращаться?" required data-fs-field>
-          <span data-fs-error="name"></span>
-        </div>
+<form class="contact-form" id="contactForm" action="https://formspree.io/f/mqevqjqz" method="POST">
+  <div class="contact-form__field">
+    <label for="name" id="nameLabel">Ваше имя</label>
+    <input type="text" id="name" name="name" placeholder="Как к вам обращаться?">
+  </div>
 
-        <div class="contact-form__field">
-          <label for="email" id="emailLabel">Email</label>
-          <input type="email" id="email" name="email" placeholder="your@email.com" required data-fs-field>
-          <span data-fs-error="email"></span>
-        </div>
+  <div class="contact-form__field">
+    <label for="email" id="emailLabel">Email</label>
+    <input type="email" id="email" name="email" placeholder="your@email.com">
+  </div>
 
-        <div class="contact-form__field">
-          <label for="message" id="msgLabel">Ваше сообщение</label>
-          <textarea id="message" name="message" rows="6" placeholder="Представьтесь и расскажите о вашем проекте..." required data-fs-field></textarea>
-          <span data-fs-error="message"></span>
-        </div>
+  <div class="contact-form__field">
+    <label for="message" id="msgLabel">Ваше сообщение</label>
+    <textarea id="message" name="message" rows="6" placeholder="Представьтесь и расскажите о вашем проекте..."></textarea>
+  </div>
 
-        <!-- Honeypot-поле для Formspree -->
-        <div class="honeypot" aria-hidden="true">
-          <label for="honeypot">Оставьте это поле пустым</label>
-          <input type="text" id="honeypot" name="_gotcha" tabindex="-1" autocomplete="off">
-        </div>
+  <!-- ⚠️ КНОПКА ОТКЛЮЧЕНА — НЕ РАБОТАЕТ -->
+  <button type="button" class="btn btn--primary btn--large" id="sendBtn" disabled style="opacity:0.5;cursor:not-allowed;">
+    Отправить не удастся 
+  </button>
 
-        <div data-fs-success style="display: block; margin-top: 1rem; color: #C9A84C; font-weight: 450;">
-          ✅ Сообщение успешно отправлено! Спасибо.
-        </div>
-        <div data-fs-error style="display: block; margin-top: 1rem; color: #E74C3C;"></div>
-
-        <button type="submit" class="btn btn--primary btn--large" id="sendBtn" data-fs-submit-btn>Отправить</button>
-        <div class="contact-form__status" id="formStatus"></div>
-      </form>
+  <div class="contact-form__status" id="formStatus"></div>
+</form>
 
       <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.05);">
         <h3 style="font-size:1.1rem;margin-bottom:1.2rem;color:rgba(255,255,255,0.6);font-weight:500;text-align:center;" id="valuesTitle">Ценности, которые определяют мой подход к работе</h3>
