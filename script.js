@@ -104,7 +104,8 @@ const data = {
       strategy: { task: 'Стратегическая задача', solution: 'Стратегическое решение', result: 'Результат' }
     },
     brandsLabel: 'Бренды',
-    brandsSub: 'С которыми я работал'
+    brandsSub: 'С которыми я работал',
+    brandsList: ['Fender', 'Yamaha', 'Marshall', 'Mesa Boogie', 'Korg', 'Vox', 'Roland', 'Boss', 'Kawai', 'Gibson', 'Epiphone', 'Ibanez', 'Schecter', 'Orange', 'Blackstar', 'JBL', 'Fishman', 'Sennheiser', 'AKG', 'FBT', 'Behringer', 'Ampeg', 'Line 6', 'Fender Amps', 'Jackson', 'Charvel', 'Gretsch', 'Squier', 'Mono', 'Takamine', 'Soundcraft', 'DBX', 'DigiTech', 'TC Electronic', 'PreSonus', 'Focusrite', 'Novation', 'Akai Professional', 'Native Instruments', 'Ableton', 'Universal Audio', "D'Addario", 'Involight', 'YME audiotechnik', 'Anzhee']
   },
   en: {
     nameLabel: 'Your name',
@@ -207,7 +208,8 @@ const data = {
       strategy: { task: 'Strategic task', solution: 'Strategic solution', result: 'Result' }
     },
     brandsLabel: 'Brands',
-    brandsSub: "I've worked with"
+    brandsSub: "I've worked with",
+    brandsList: ['Fender', 'Yamaha', 'Marshall', 'Mesa Boogie', 'Korg', 'Vox', 'Roland', 'Boss', 'Kawai', 'Gibson', 'Epiphone', 'Ibanez', 'Schecter', 'Orange', 'Blackstar', 'JBL', 'Fishman', 'Sennheiser', 'AKG', 'FBT', 'Behringer', 'Ampeg', 'Line 6', 'Fender Amps', 'Jackson', 'Charvel', 'Gretsch', 'Squier', 'Mono', 'Takamine', 'Soundcraft', 'DBX', 'DigiTech', 'TC Electronic', 'PreSonus', 'Focusrite', 'Novation', 'Akai Professional', 'Native Instruments', 'Ableton', 'Universal Audio', "D'Addario", 'Involight', 'YME audiotechnik', 'Anzhee']
   }
 };
 
@@ -422,19 +424,6 @@ const casesList = {
   ]
 };
 
-// Бренды для слайдера
-const brandsList = [
-  'Fender', 'Yamaha', 'Marshall', 'Mesa Boogie', 'Korg', 'Vox',
-  'Roland', 'Boss', 'Kawai', 'Gibson', 'Epiphone', 'Ibanez',
-  'Schecter', 'Orange', 'Blackstar', 'JBL', 'Fishman', 'Sennheiser',
-  'AKG', 'FBT', 'Behringer', 'Ampeg', 'Line 6', 'Fender Amps',
-  'Jackson', 'Charvel', 'Gretsch', 'Squier', 'Mono', 'Takamine',
-  'Soundcraft', 'DBX', 'DigiTech', 'TC Electronic', 'PreSonus',
-  'Focusrite', 'Novation', 'Akai Professional', 'Native Instruments',
-  'Ableton', 'Universal Audio', "D'Addario", 'Involight',
-  'YME audiotechnik', 'Anzhee'
-];
-
 // ============================================================
 // 3. ЛОГИКА ПРИЛОЖЕНИЯ
 // ============================================================
@@ -556,8 +545,10 @@ function renderBrands() {
   document.getElementById('brandsSub').textContent = d.brandsSub;
 
   const track = document.getElementById('brandsTrack');
-  // Дублируем список для бесконечной анимации
-  const doubled = [...brandsList, ...brandsList];
+  if (!track) return;
+  
+  const brands = d.brandsList || [];
+  const doubled = [...brands, ...brands];
   track.innerHTML = doubled.map(brand => `<span class="brand-slide">${brand}</span>`).join('');
 }
 
@@ -922,5 +913,5 @@ document.addEventListener('DOMContentLoaded', function() {
   // ============================================================
   initMetricsCloud();
 
-  console.log('✅ Executive Casebook v17 — с паутиной и английским заголовком брендов');
+  console.log('✅ Executive Casebook v18 — исправлены бренды и паутина');
 });
