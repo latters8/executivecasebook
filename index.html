@@ -84,7 +84,7 @@
           <p>Маркетинг — это не про инструменты. Это про понимание людей и их потребностей.</p>
         </div>
 
-        <!-- 6 метрик -->
+        <!-- 6 метрик вместо 5 -->
         <div class="hero-metrics" id="heroMetrics">
           <div class="hero-metric">
             <div class="hero-metric__number">14+</div>
@@ -127,7 +127,7 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     PERSPECTIVE SWITCH (исправлен)
+     PERSPECTIVE SWITCH (с анимацией скрытия на мобильных)
      ════════════════════════════════════════════════════════════ -->
 <div class="perspective-switch-wrapper" id="perspectiveWrapper">
   <div class="container">
@@ -311,7 +311,6 @@
         <p id="contactP3">Лучшие идеи редко появляются в одиночку. Они рождаются в открытом профессиональном диалоге.</p>
       </div>
 
-      <!-- ФОРМА (исправлена) -->
       <form class="contact-form" id="contactForm" action="https://formspree.io/f/mqevqjqz" method="POST">
         <div class="contact-form__field">
           <label for="name" id="nameLabel">Ваше имя</label>
@@ -337,13 +336,10 @@
           <input type="text" id="honeypot" name="_gotcha" tabindex="-1" autocomplete="off">
         </div>
 
-        <!-- УСПЕХ — скрыт по умолчанию -->
-        <div data-fs-success style="display: none; margin-top: 1rem; color: #C9A84C; font-weight: 450;">
+        <div data-fs-success style="display: block; margin-top: 1rem; color: #C9A84C; font-weight: 450;">
           ✅ Сообщение успешно отправлено! Спасибо.
         </div>
-
-        <!-- ОШИБКА — скрыта по умолчанию -->
-        <div data-fs-error style="display: none; margin-top: 1rem; color: #E74C3C;"></div>
+        <div data-fs-error style="display: block; margin-top: 1rem; color: #E74C3C;"></div>
 
         <button type="submit" class="btn btn--primary btn--large" id="sendBtn" data-fs-submit-btn>Отправить</button>
         <div class="contact-form__status" id="formStatus"></div>
@@ -371,7 +367,7 @@
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-     BRANDS SLIDER
+     BRANDS SLIDER — ПЕРЕД ПОДВАЛОМ
      ════════════════════════════════════════════════════════════ -->
 <section class="brands-slider" id="brands">
   <div class="container">
