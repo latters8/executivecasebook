@@ -4,15 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Владимир Барбашин — Executive Casebook</title>
+  <meta name="description" content="Executive Casebook Владимира Барбашина — бизнес, маркетинг, стратегия. 14+ лет практики, системный подход.">
+  
+  <!-- Preconnect для внешних ресурсов -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 
   <!-- ФАВИКОН -->
-  <link rel="icon" href="assets/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  
+  <!-- ШРИФТЫ -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,450;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  
+  <!-- СТИЛИ -->
+  <link rel="stylesheet" href="styles.min.css">
 
-  <!-- ⚠️ Formspree временно отключен -->
-  <!-- <script src="https://unpkg.com/@formspree/ajax@1" defer></script> -->
+  <!-- АДАПТИВНЫЙ ФОН -->
+  <style>
+    body {
+      background-image: 
+        linear-gradient(180deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.78) 100%),
+        url('assets/background-2560.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+    @media (min-width: 2561px) {
+      body {
+        background-image: 
+          linear-gradient(180deg, rgba(10,10,10,0.82) 0%, rgba(10,10,10,0.78) 100%),
+          url('assets/background-3840.webp');
+      }
+    }
+    @media (max-width: 768px) {
+      body {
+        background-attachment: scroll;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -24,7 +55,7 @@ HEADER
     <div class="header__left">
       <div class="logo">
         <span class="logo__icon">
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="30" aria-hidden="true">
             <circle cx="50" cy="50" r="42" fill="#111111"/>
             <circle cx="50" cy="50" r="38" fill="#1A1A1A"/>
             <circle cx="42" cy="40" r="6" fill="rgba(255,255,255,0.2)" filter="url(#blur)"/>
@@ -40,7 +71,7 @@ HEADER
       <div class="logo__sub" id="logoSub">Бизнес · Маркетинг · Стратегия</div>
     </div>
 
-    <nav class="nav" id="nav">
+    <nav class="nav" id="nav" aria-label="Основное меню">
       <a href="#cases" id="navCases">Кейсы</a>
       <a href="#metrics" id="navMetrics">Цифры</a>
       <a href="#competencies" id="navCompetencies">Компетенции</a>
@@ -48,13 +79,13 @@ HEADER
     </nav>
 
     <div class="header__right">
-      <div class="lang-switch" id="langSwitch">
+      <div class="lang-switch" id="langSwitch" role="button" tabindex="0" aria-label="Переключить язык">
         <span class="lang-switch__active" id="langActive">РУ</span>
         <span class="lang-switch__sep">|</span>
         <span class="lang-switch__inactive" id="langInactive">EN</span>
       </div>
       <a href="#contact" class="btn btn--primary btn--small" id="headerContact">Связаться</a>
-      <button class="burger" id="burger" aria-label="Меню">
+      <button class="burger" id="burger" aria-label="Меню" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -118,7 +149,7 @@ HERO
 
       <div class="hero__visual" aria-hidden="true">
         <div class="hero__photo-card">
-          <img src="assets/picture.JPG" alt="Фото">
+          <img src="assets/picture.webp" alt="Владимир Барбашин" loading="lazy" decoding="async" width="420" height="620">
         </div>
       </div>
     </div>
@@ -131,7 +162,7 @@ PERSPECTIVE SWITCH
 <div class="perspective-switch-wrapper" id="perspectiveWrapper">
   <div class="container">
     <div class="perspective-switch__label" id="perspectiveLabel">Выберите перспективу</div>
-    <div class="perspective-switch" id="perspectiveSwitch">
+    <div class="perspective-switch" id="perspectiveSwitch" role="group" aria-label="Переключение перспектив">
       <button type="button" class="perspective-option active" data-perspective="business" id="pBusiness">
         <span class="dot"></span> <span id="pBusinessLabel">Бизнес</span>
       </button>
@@ -172,27 +203,17 @@ DIGITAL FOOTPRINT — ГЕОМЕТРИЧЕСКАЯ СЕТКА
     <p class="section-sub" id="metricsSub">Реальные результаты, измеряемые в цифрах</p>
 
     <div class="metrics-cloud" id="metricsCloud">
-      <!-- SVG-геометрическая сетка -->
-      <svg class="metrics-cloud__svg" viewBox="0 0 900 500" preserveAspectRatio="xMidYMid meet">
-        <!-- ГЕКСАГОНАЛЬНАЯ СЕТКА (соты) -->
+      <svg class="metrics-cloud__svg" viewBox="0 0 900 500" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Схема связей">
         <defs>
           <pattern id="hexGrid" width="60" height="104" patternUnits="userSpaceOnUse" patternTransform="scale(0.8)">
-            <path d="M30 0 L60 17.3 L60 52 L30 69.3 L0 52 L0 17.3 Z" 
-                  fill="none" stroke="var(--accent, #C9A84C)" stroke-width="0.4" opacity="0.08"/>
-            <path d="M30 52 L60 69.3 L60 104 L30 121.3 L0 104 L0 69.3 Z" 
-                  fill="none" stroke="var(--accent, #C9A84C)" stroke-width="0.4" opacity="0.08"/>
+            <path d="M30 0 L60 17.3 L60 52 L30 69.3 L0 52 L0 17.3 Z" fill="none" stroke="var(--accent, #C9A84C)" stroke-width="0.4" opacity="0.08"/>
+            <path d="M30 52 L60 69.3 L60 104 L30 121.3 L0 104 L0 69.3 Z" fill="none" stroke="var(--accent, #C9A84C)" stroke-width="0.4" opacity="0.08"/>
           </pattern>
         </defs>
-        
-        <!-- ЗАЛИВКА СЕТКОЙ -->
         <rect width="900" height="500" fill="url(#hexGrid)" />
-
-        <!-- ОРБИТЫ (лёгкие, как намёк) -->
         <circle class="cloud-orbit" cx="450" cy="250" r="90" />
         <circle class="cloud-orbit" cx="450" cy="250" r="160" />
         <circle class="cloud-orbit" cx="450" cy="250" r="230" />
-
-        <!-- ДИАГОНАЛЬНЫЕ ЛИНИИ (переплетение) -->
         <g class="cloud-diagonals">
           <line x1="0" y1="0" x2="900" y2="500" />
           <line x1="0" y1="100" x2="900" y2="400" />
@@ -209,12 +230,9 @@ DIGITAL FOOTPRINT — ГЕОМЕТРИЧЕСКАЯ СЕТКА
           <line x1="700" y1="0" x2="200" y2="500" />
           <line x1="800" y1="0" x2="100" y2="500" />
         </g>
-
-        <!-- ЦЕНТР -->
         <circle class="cloud-center" cx="450" cy="250" />
       </svg>
 
-      <!-- УЗЛЫ -->
       <div class="metric-node" style="left:10%; top:12%;" data-delay="0">
         <span class="metric-node__number">14+</span>
         <span class="metric-node__label" id="n1">лет опыта</span>
@@ -309,7 +327,7 @@ FUTURE
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-CONTACT — ФОРМА С ОТКЛЮЧЁННОЙ КНОПКОЙ
+CONTACT
 ════════════════════════════════════════════════════════════ -->
 <section class="section" id="contact">
   <div class="section-bg" style="background-image: url('assets/contact-placeholder.svg'); opacity:0.04;"></div>
@@ -323,15 +341,15 @@ CONTACT — ФОРМА С ОТКЛЮЧЁННОЙ КНОПКОЙ
         <p id="contactP3">Лучшие идеи редко появляются в одиночку. Они рождаются в открытом профессиональном диалоге.</p>
       </div>
 
-      <form class="contact-form" id="contactForm" action="https://formspree.io/f/mqevqjqz" method="POST">
+      <form class="contact-form" id="contactForm" novalidate>
         <div class="contact-form__field">
           <label for="name" id="nameLabel">Ваше имя</label>
-          <input type="text" id="name" name="name" placeholder="Как к вам обращаться?">
+          <input type="text" id="name" name="name" placeholder="Как к вам обращаться?" autocomplete="name">
         </div>
 
         <div class="contact-form__field">
           <label for="email" id="emailLabel">Email</label>
-          <input type="email" id="email" name="email" placeholder="your@email.com">
+          <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email">
         </div>
 
         <div class="contact-form__field">
@@ -339,7 +357,6 @@ CONTACT — ФОРМА С ОТКЛЮЧЁННОЙ КНОПКОЙ
           <textarea id="message" name="message" rows="6" placeholder="Представьтесь и расскажите о вашем проекте..."></textarea>
         </div>
 
-        <!-- ⚠️ КНОПКА ОТКЛЮЧЕНА -->
         <button type="button" class="btn btn--primary btn--large" id="sendBtn" disabled style="opacity:0.5;cursor:not-allowed;">
           Отправить
         </button>
@@ -347,7 +364,6 @@ CONTACT — ФОРМА С ОТКЛЮЧЁННОЙ КНОПКОЙ
         <div class="contact-form__status" id="formStatus"></div>
       </form>
 
-      <!-- Ценности -->
       <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.05);">
         <h3 style="font-size:1.1rem;margin-bottom:1.2rem;color:rgba(255,255,255,0.6);font-weight:500;text-align:center;" id="valuesTitle">Ценности, которые определяют мой подход к работе</h3>
 
@@ -361,7 +377,6 @@ CONTACT — ФОРМА С ОТКЛЮЧЁННОЙ КНОПКОЙ
         </div>
       </div>
 
-      <!-- Цитата -->
       <div class="quote-block" style="margin:2.5rem 0 0.5rem;">
         <p id="quote1">«В конечном счёте компании развиваются не благодаря отдельным инструментам.</p>
         <p id="quote2">Они развиваются благодаря людям, способным видеть систему целиком и последовательно делать её лучше.»</p>
@@ -372,13 +387,13 @@ CONTACT — ФОРМА С ОТКЛЮЧЁННОЙ КНОПКОЙ
 </section>
 
 <!-- ════════════════════════════════════════════════════════════
-BRANDS SLIDER — УПРАВЛЯЕТСЯ ЧЕРЕЗ JS
+BRANDS SLIDER
 ════════════════════════════════════════════════════════════ -->
 <section class="brands-slider" id="brands">
   <div class="container">
     <div class="brands-slider__header">
       <span class="brands-slider__label" id="brandsLabel">Бренды</span>
-      <span class="brands-slider__sub" id="brandsSub">с которыми я работал</span>
+      <span class="brands-slider__sub" id="brandsSub">С которыми я работал</span>
     </div>
     <div class="brands-slider__track-wrapper">
       <div class="brands-slider__track" id="brandsTrack">
@@ -395,7 +410,7 @@ FOOTER
   <div class="container footer__inner">
     <div class="footer__left" id="footerYear">© 2026</div>
     <div class="footer__right">
-      <div class="lang-switch" id="langSwitchFooter">
+      <div class="lang-switch" id="langSwitchFooter" role="button" tabindex="0" aria-label="Переключить язык">
         <span class="lang-switch__active" id="langActiveF">РУ</span>
         <span class="lang-switch__sep">|</span>
         <span class="lang-switch__inactive" id="langInactiveF">EN</span>
@@ -408,9 +423,9 @@ FOOTER
 BACK TO TOP
 ════════════════════════════════════════════════════════════ -->
 <button class="back-to-top" id="backToTop" aria-label="Наверх">
-  <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
 </button>
 
-<script src="script.js"></script>
+<script src="script.min.js" defer></script>
 </body>
 </html>
