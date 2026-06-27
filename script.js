@@ -7,7 +7,7 @@ const data = {
     heroTag: '14+ лет практики · B2B · B2C · Business Development',
     heroTitle: 'Бизнес — это <span class="highlight">система</span>,<br>а не набор инструментов.',
     heroText: [
-      '<p class="hero__text-lead">«Рост замедляется не из-за отсутствия идей,</p><p class="hero__text-lead" style="margin-top: -0.5rem;">а потому, что маркетинг, продажи и стратегия работают изолированно.»</p>',
+      '<p class="hero__text-lead">«Рост замедляется не из-за отсутствия идей.</p><p class="hero__text-lead" style="margin-top: -0.5rem;">А потому, что маркетинг, продажи и стратегия работают изолированно.»</p>',
       'Устойчивое развитие требует единой модели, где каждое решение усиливает другие.',
       'Маркетинг — это не про инструменты. Это про понимание людей и их потребностей.'
     ],
@@ -436,7 +436,7 @@ function syncAccentStyles() {
   const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim() || '#C9A84C';
   document.querySelectorAll('.highlight').forEach(el => { el.style.color = accent; });
   document.querySelectorAll('.hero-metric__number').forEach(el => { el.style.color = accent; });
-  document.querySelectorAll('.metric-node__number').forEach(el => { el.style.color = accent; });
+  document.querySelectorAll('.metric-glass__number').forEach(el => { el.style.color = accent; });
   document.querySelectorAll('.competency-card__num').forEach(el => { el.style.color = accent; });
 }
 
@@ -662,7 +662,6 @@ function applyTheme(perspective) {
   document.querySelector('.perspective-switch').style.borderColor = border;
   document.querySelectorAll('.btn--primary').forEach(el => { el.style.background = accent; });
   document.querySelectorAll('.nav a').forEach(el => { el.style.setProperty('--nav-underline', accent); });
-  document.querySelectorAll('.metric-network svg line.active').forEach(line => { line.style.stroke = accent; });
   syncAccentStyles();
 }
 
@@ -702,7 +701,33 @@ function loadSaved() {
 }
 
 // ============================================================
-// 6. ИНИЦИАЛИЗАЦИЯ
+// 6. АНИМАЦИЯ ДЛЯ GLASS-КАРТОЧЕК
+// ============================================================
+
+function initMetricsAnimation() {
+  const glassCards = document.querySelectorAll('.metric-glass');
+  if (!glassCards.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        const delay = index * 80;
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, delay);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  glassCards.forEach(card => observer.observe(card));
+}
+
+// ============================================================
+// 7. ИНИЦИАЛИЗАЦИЯ
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -819,7 +844,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadSaved();
 
-  // Scroll reveal
+  // Scroll reveal для остальных элементов
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -827,8 +852,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal, .stagger, .competency-card, .case-card, .value-item, .metric-node, .card, .competency-grid, .values-grid, .grid-2, .grid-3')
+  document.querySelectorAll('.reveal, .stagger, .competency-card, .case-card, .value-item, .card, .competency-grid, .values-grid, .grid-2, .grid-3')
     .forEach(el => observer.observe(el));
+
+  // Анимация для Glass-карточек
+  initMetricsAnimation();
 
   console.log('✅ Executive Casebook v15 — GitHub структура');
 });
