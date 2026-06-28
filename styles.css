@@ -2166,7 +2166,24 @@ FIX: ВЕРТИКАЛЬНОЕ ОТОБРАЖЕНИЕ (МОБИЛЬНЫЕ)
     font-size: 0.85rem;
   }
 }
+/* ============================================================
+CANVAS ANIMATION — AMBIENT PULSE
+============================================================ */
 
+@keyframes ambientPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1.0; transform: scale(1.08); }
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+  #metrics-animated-bg {
+    display: block !important;
+  }
+  #metrics-animated-bg canvas {
+    display: block !important;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
