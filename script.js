@@ -249,7 +249,7 @@ const casesList = {
       company: 'A&T Trade',
       url: 'ATTRADE.RU',
       stats: [
-        { label: { ru: 'Дилеров и партнёров', en: 'Dealers & Partners' }, value: '1 500+' },
+        { label: { ru: 'Дилеров и партнёров', en: 'Dealers & Partners' }, value: '1 100+' },
         { label: { ru: 'Розничных магазинов', en: 'Retail stores' }, value: '40+' },
         { label: { ru: 'Сотрудников', en: 'Employees' }, value: '300+' },
         { label: { ru: 'Рост Fender', en: 'Fender growth' }, value: '+20%', highlight: true }
