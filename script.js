@@ -126,7 +126,7 @@ const data = {
     perspectiveLabel: 'Choose your perspective',
     perspectiveSub: 'One experience. Three perspectives. One systemic approach.',
     pLabels: ['Business', 'Marketing', 'Strategy'],
-    nav: ['Cases', 'Metrics', 'Competencies', 'Portfolio', 'Contact'],
+    nav: ['Cases', 'Metrics', 'Competencies', 'Contact'],
     headerContact: 'Contact',
     logoSub: 'Business · Marketing · Strategy',
     burgerLabel: 'Menu',
