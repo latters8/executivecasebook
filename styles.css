@@ -3028,3 +3028,76 @@ FIX: БУРГЕР-МЕНЮ ДЛЯ МОБИЛЬНЫХ
   color: rgba(255,255,255,0.4);
   letter-spacing: 0.05em;
 }
+/* ============================================================
+ПОРТФОЛИО — ПЕРСПЕКТИВНЫЕ ЦВЕТА
+============================================================ */
+
+/* Кнопки фильтров */
+.portfolio-filter-btn {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.6);
+  padding: 0.6rem 1.6rem;
+  border-radius: 40px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.portfolio-filter-btn:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: var(--accent, #C9A84C);
+  color: #fff;
+}
+
+.portfolio-filter-btn.active {
+  background: rgba(255,255,255,0.1);
+  border-color: var(--accent, #C9A84C);
+  color: var(--accent, #C9A84C);
+  box-shadow: 0 0 30px var(--accent-glow, rgba(201,168,76,0.06));
+}
+
+/* Карточки портфолио */
+.portfolio-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.22,1,0.36,1);
+  cursor: pointer;
+  position: relative;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent, rgba(201,168,76,0.2));
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+
+.portfolio-card__tag {
+  display: inline-block;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent, #D4AF37);
+  background: rgba(255,255,255,0.05);
+  padding: 0.2rem 0.9rem;
+  border-radius: 20px;
+  margin-bottom: 0.7rem;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Модальное окно */
+.portfolio-modal__inner {
+  border-color: var(--accent-border, rgba(201,168,76,0.1));
+}
+
+.portfolio-modal__body strong {
+  color: var(--accent, #D4AF37);
+}
+
+.portfolio-modal__achievement .number {
+  color: var(--accent, #D4AF37);
+}
