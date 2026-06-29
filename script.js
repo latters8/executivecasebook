@@ -107,7 +107,7 @@ const data = {
     brandsSub: 'с которыми я работал',
     brandsList: ['Fender', 'Yamaha', 'Marshall', 'Mesa Boogie', 'Korg', 'Vox', 'Roland', 'Boss', 'Kawai', 'Gibson', 'Epiphone', 'Ibanez', 'Schecter', 'Orange', 'Blackstar', 'JBL', 'Fishman', 'Sennheiser', 'AKG', 'FBT', 'Behringer', 'Ampeg', 'Line 6', 'Fender Amps', 'Jackson', 'Charvel', 'Gretsch', 'Squier', 'Mono', 'Takamine', 'Soundcraft', 'DBX', 'DigiTech', 'TC Electronic', 'PreSonus', 'Focusrite', 'Novation', 'Akai Professional', 'Native Instruments', 'Ableton', 'Universal Audio', "D'Addario", 'Involight', 'YME audiotechnik', 'Anzhee'],
     portfolioTitle: 'Портфолио <span class="highlight">проектов</span>',
-    portfolioSub: 'Реальные проекты, в которых я участвовал как руководитель и стратег. Каждый кейс — это система, которую мы выстроили и развили.'
+    portfolioSub: 'Проекты, в которых я участвовал как руководитель и стратег.'
   },
   en: {
     nameLabel: 'Your name',
@@ -213,7 +213,7 @@ const data = {
     brandsSub: "I've worked with",
     brandsList: ['Fender', 'Yamaha', 'Marshall', 'Mesa Boogie', 'Korg', 'Vox', 'Roland', 'Boss', 'Kawai', 'Gibson', 'Epiphone', 'Ibanez', 'Schecter', 'Orange', 'Blackstar', 'JBL', 'Fishman', 'Sennheiser', 'AKG', 'FBT', 'Behringer', 'Ampeg', 'Line 6', 'Fender Amps', 'Jackson', 'Charvel', 'Gretsch', 'Squier', 'Mono', 'Takamine', 'Soundcraft', 'DBX', 'DigiTech', 'TC Electronic', 'PreSonus', 'Focusrite', 'Novation', 'Akai Professional', 'Native Instruments', 'Ableton', 'Universal Audio', "D'Addario", 'Involight', 'YME audiotechnik', 'Anzhee'],
     portfolioTitle: 'Project <span class="highlight">portfolio</span>',
-    portfolioSub: 'Real projects where I acted as a leader and strategist. Each case is a system we built and developed.'
+    portfolioSub: 'Projects where I acted as a leader and strategist.'
   }
 };
 
