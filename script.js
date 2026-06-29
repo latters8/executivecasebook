@@ -464,12 +464,12 @@ const portfolioData = [
       ru: [
         { number: '2+ млрд ₽', label: 'оборот' },
         { number: '+12%', label: 'доля рынка' },
-        { number: '300+', label: 'сотрудников' }
+        { number: '90k+', label: 'посетителей' }
       ],
       en: [
         { number: '2+ billion ₽', label: 'revenue' },
         { number: '+12%', label: 'market share' },
-        { number: '300+', label: 'employees' }
+        { number: '90k+', label: 'visitors' }
       ]
     },
     tags: {
@@ -511,12 +511,12 @@ const portfolioData = [
       ru: [
         { number: '+20%', label: 'рост продаж Fender' },
         { number: '+30%', label: 'дилерская сеть' },
-        { number: '100+', label: 'брендов в портфеле' }
+        { number: '+50%', label: 'маркетинговые активности' }
       ],
       en: [
         { number: '+20%', label: 'Fender sales growth' },
         { number: '+30%', label: 'dealer network' },
-        { number: '100+', label: 'brands in portfolio' }
+        { number: '+50%', label: 'marketig activities' }
       ]
     },
     tags: {
@@ -560,12 +560,12 @@ const portfolioData = [
       ru: [
         { number: '+30%', label: 'рост лидов' },
         { number: '-15%', label: 'CAC' },
-        { number: '500+', label: 'партнеров' }
+        { number: '+310', label: 'пунктов ИКС' }
       ],
       en: [
         { number: '+30%', label: 'lead growth' },
         { number: '-15%', label: 'CAC' },
-        { number: '500+', label: 'partners' }
+        { number: '+310', label: 'PageRank' }
       ]
     },
     tags: {
