@@ -444,20 +444,20 @@ const portfolioData = [
     },
     fullDesc: {
       ru: `
-        <p><strong>INVASK</strong> (<a href="https://invask.ru/pages/about" target="_blank" style="color:#D4AF37;">invask.ru</a>) — крупнейший дистрибьютор профессионального музыкального и звукового оборудования в России и СНГ.</p>
+        <p><strong>INVASK</strong> (<a href="https://invask.ru/pages/about" target="_blank" style="color:var(--accent, #D4AF37);">invask.ru</a>) — крупнейший дистрибьютор профессионального музыкального и звукового оборудования в России и СНГ.</p>
         <p>Эксклюзивный дистрибьютор торговых марок: 18 SOUND, POWERSOFT, INVOLIGHT, SAMICK, GREG BENNETT, GATOR, ON-STAGE, TEMPO, INVOTONE, FBT, BARCELONA, BEAUMONT, DDRUM, DEAN GUITARS, LUNA, MADRIX, SHOW, WAVES, WIKI, REDHILL.</p>
         <p>Официальный дистрибьютор: PIONEER, SOUNDCRAFT, CROWN, JBL, LEXICON, DBX, BSS, DIGITECH, BEHRINGER, TURBOSOUND, D'ADDARIO, DEAN MARKLEY, PERRI'S, PROEL, DASLIGHT/SUNLITE.</p>
         <p>Официальный дилер: YAMAHA, SENNHEISER, ROLAND/BOSS.</p>
         <p>Клиенты: профессиональные музыканты, инсталляционные и прокатные компании, музыкальные школы, театры, концертные залы, клубы, рестораны, радиостанции.</p>
-        <p style="margin-top:0.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);">🔗 <a href="https://invask.ru/pages/about" target="_blank" style="color:#D4AF37;">invask.ru/pages/about</a></p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);">🔗 <a href="https://invask.ru/pages/about" target="_blank" style="color:var(--accent, #D4AF37);">invask.ru/pages/about</a></p>
       `,
       en: `
-        <p><strong>INVASK</strong> (<a href="https://invask.ru/pages/about" target="_blank" style="color:#D4AF37;">invask.ru</a>) — the largest distributor of professional music and sound equipment in Russia and the CIS.</p>
+        <p><strong>INVASK</strong> (<a href="https://invask.ru/pages/about" target="_blank" style="color:var(--accent, #D4AF37);">invask.ru</a>) — the largest distributor of professional music and sound equipment in Russia and the CIS.</p>
         <p>Exclusive distributor for: 18 SOUND, POWERSOFT, INVOLIGHT, SAMICK, GREG BENNETT, GATOR, ON-STAGE, TEMPO, INVOTONE, FBT, BARCELONA, BEAUMONT, DDRUM, DEAN GUITARS, LUNA, MADRIX, SHOW, WAVES, WIKI, REDHILL.</p>
         <p>Official distributor for: PIONEER, SOUNDCRAFT, CROWN, JBL, LEXICON, DBX, BSS, DIGITECH, BEHRINGER, TURBOSOUND, D'ADDARIO, DEAN MARKLEY, PERRI'S, PROEL, DASLIGHT/SUNLITE.</p>
         <p>Official dealer for: YAMAHA, SENNHEISER, ROLAND/BOSS.</p>
         <p>Clients: professional musicians, installation and rental companies, music schools, theaters, concert halls, clubs, restaurants, radio stations.</p>
-        <p style="margin-top:0.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);">🔗 <a href="https://invask.ru/pages/about" target="_blank" style="color:#D4AF37;">invask.ru/pages/about</a></p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);">🔗 <a href="https://invask.ru/pages/about" target="_blank" style="color:var(--accent, #D4AF37);">invask.ru/pages/about</a></p>
       `
     },
     achievements: {
@@ -493,18 +493,18 @@ const portfolioData = [
     },
     fullDesc: {
       ru: `
-        <p><strong>A&T Trade</strong> (<a href="https://attrade.ru/about/" target="_blank" style="color:#D4AF37;">attrade.ru</a>) — крупнейший дистрибьютор оборудования для шоу-бизнеса на постсоветском пространстве.</p>
+        <p><strong>A&T Trade</strong> (<a href="https://attrade.ru/about/" target="_blank" style="color:var(--accent, #D4AF37);">attrade.ru</a>) — крупнейший дистрибьютор оборудования для шоу-бизнеса на постсоветском пространстве.</p>
         <p>Дистрибьюторский портфель: 52 эксклюзивных бренда и более 100 торговых марок, включая: Martin Audio, Electro-Voice, Focusrite, Shure, Bosch, Pioneer, Yamaha, Chauvet, Ibanez, Korg, JBL, Fender, Gibson, Mackie, Alto.</p>
         <p>Партнеры: 1150 компаний в России, Белоруссии и Казахстане, формирующих профессиональное ядро (90% игроков на рынке музыкальных инструментов и 80% на рынке профессионального аудио).</p>
         <p>Развитая система пред- и постпродажных услуг, программы развития бизнеса, совместный маркетинг, pre-sale, защита сделок.</p>
-        <p style="margin-top:0.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);">🔗 <a href="https://attrade.ru/about/" target="_blank" style="color:#D4AF37;">attrade.ru/about/</a></p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);">🔗 <a href="https://attrade.ru/about/" target="_blank" style="color:var(--accent, #D4AF37);">attrade.ru/about/</a></p>
       `,
       en: `
-        <p><strong>A&T Trade</strong> (<a href="https://attrade.ru/about/" target="_blank" style="color:#D4AF37;">attrade.ru</a>) — the largest distributor of show business equipment in the post-Soviet space.</p>
+        <p><strong>A&T Trade</strong> (<a href="https://attrade.ru/about/" target="_blank" style="color:var(--accent, #D4AF37);">attrade.ru</a>) — the largest distributor of show business equipment in the post-Soviet space.</p>
         <p>Distributor portfolio: 52 exclusive brands and over 100 trademarks, including: Martin Audio, Electro-Voice, Focusrite, Shure, Bosch, Pioneer, Yamaha, Chauvet, Ibanez, Korg, JBL, Fender, Gibson, Mackie, Alto.</p>
         <p>Partners: 1,150 companies in Russia, Belarus, and Kazakhstan, forming the professional core (90% of players in the musical instruments market and 80% in the professional audio market).</p>
         <p>Developed pre- and post-sales service system, business development programs, co-marketing, pre-sale, and deal protection.</p>
-        <p style="margin-top:0.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);">🔗 <a href="https://attrade.ru/about/" target="_blank" style="color:#D4AF37;">attrade.ru/about/</a></p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);">🔗 <a href="https://attrade.ru/about/" target="_blank" style="color:var(--accent, #D4AF37);">attrade.ru/about/</a></p>
       `
     },
     achievements: {
@@ -540,20 +540,20 @@ const portfolioData = [
     },
     fullDesc: {
       ru: `
-        <p><strong>ANZHEE</strong> (<a href="https://anzhee.ru/o-kompanii/" target="_blank" style="color:#D4AF37;">anzhee.ru</a>) — вендор и дистрибьютор профессионального сценического оборудования.</p>
+        <p><strong>ANZHEE</strong> (<a href="https://anzhee.ru/o-kompanii/" target="_blank" style="color:var(--accent, #D4AF37);">anzhee.ru</a>) — вендор и дистрибьютор профессионального сценического оборудования.</p>
         <p>Собственные бренды: Anzhee (световое и звуковое оборудование), PROCBET (освещение), EasySound (звук).</p>
         <p>Дистрибуция брендов: Avolites, Robe, DJPower, DTS, Admark, Showven.</p>
         <p>Дилерская сеть: более 500 партнёров в РФ, Беларуси, Казахстане и Азербайджане. Ассортимент: свыше 300 моделей собственных брендов и более 500 наименований в дистрибуции.</p>
         <p>Собственный авторизованный сервисный центр с инженерами для гарантийного и постгарантийного обслуживания.</p>
-        <p style="margin-top:0.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);">🔗 <a href="https://anzhee.ru/o-kompanii/" target="_blank" style="color:#D4AF37;">anzhee.ru/o-kompanii/</a></p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);">🔗 <a href="https://anzhee.ru/o-kompanii/" target="_blank" style="color:var(--accent, #D4AF37);">anzhee.ru/o-kompanii/</a></p>
       `,
       en: `
-        <p><strong>ANZHEE</strong> (<a href="https://anzhee.ru/o-kompanii/" target="_blank" style="color:#D4AF37;">anzhee.ru</a>) — vendor and distributor of professional stage equipment.</p>
+        <p><strong>ANZHEE</strong> (<a href="https://anzhee.ru/o-kompanii/" target="_blank" style="color:var(--accent, #D4AF37);">anzhee.ru</a>) — vendor and distributor of professional stage equipment.</p>
         <p>Own brands: Anzhee (lighting and sound equipment), PROCBET (lighting), EasySound (sound).</p>
         <p>Brand distribution: Avolites, Robe, DJPower, DTS, Admark, Showven.</p>
         <p>Dealer network: over 500 partners in Russia, Belarus, Kazakhstan, and Azerbaijan. Assortment: over 300 models of own brands and over 500 items in distribution.</p>
         <p>Own authorized service center with engineers for warranty and post-warranty service.</p>
-        <p style="margin-top:0.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);">🔗 <a href="https://anzhee.ru/o-kompanii/" target="_blank" style="color:#D4AF37;">anzhee.ru/o-kompanii/</a></p>
+        <p style="margin-top:0.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);">🔗 <a href="https://anzhee.ru/o-kompanii/" target="_blank" style="color:var(--accent, #D4AF37);">anzhee.ru/o-kompanii/</a></p>
       `
     },
     achievements: {
