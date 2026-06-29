@@ -16,7 +16,7 @@ const data = {
     perspectiveLabel: 'Выберите перспективу',
     perspectiveSub: 'Один опыт. Три перспективы. Один системный подход.',
     pLabels: ['Бизнес', 'Маркетинг', 'Стратегия'],
-    nav: ['Кейсы', 'Цифры', 'Компетенции', 'Контакты'],
+    nav: ['Кейсы', 'Цифры', 'Компетенции', 'Портфолио', 'Контакты'],
     headerContact: 'Связаться',
     logoSub: 'Бизнес · Маркетинг · Стратегия',
     burgerLabel: 'Меню',
@@ -105,7 +105,9 @@ const data = {
     },
     brandsLabel: 'Бренды',
     brandsSub: 'с которыми я работал',
-    brandsList: ['Fender', 'Yamaha', 'Marshall', 'Mesa Boogie', 'Korg', 'Vox', 'Roland', 'Boss', 'Kawai', 'Gibson', 'Epiphone', 'Ibanez', 'Schecter', 'Orange', 'Blackstar', 'JBL', 'Fishman', 'Sennheiser', 'AKG', 'FBT', 'Behringer', 'Ampeg', 'Line 6', 'Fender Amps', 'Jackson', 'Charvel', 'Gretsch', 'Squier', 'Mono', 'Takamine', 'Soundcraft', 'DBX', 'DigiTech', 'TC Electronic', 'PreSonus', 'Focusrite', 'Novation', 'Akai Professional', 'Native Instruments', 'Ableton', 'Universal Audio', "D'Addario", 'Involight', 'YME audiotechnik', 'Anzhee']
+    brandsList: ['Fender', 'Yamaha', 'Marshall', 'Mesa Boogie', 'Korg', 'Vox', 'Roland', 'Boss', 'Kawai', 'Gibson', 'Epiphone', 'Ibanez', 'Schecter', 'Orange', 'Blackstar', 'JBL', 'Fishman', 'Sennheiser', 'AKG', 'FBT', 'Behringer', 'Ampeg', 'Line 6', 'Fender Amps', 'Jackson', 'Charvel', 'Gretsch', 'Squier', 'Mono', 'Takamine', 'Soundcraft', 'DBX', 'DigiTech', 'TC Electronic', 'PreSonus', 'Focusrite', 'Novation', 'Akai Professional', 'Native Instruments', 'Ableton', 'Universal Audio', "D'Addario", 'Involight', 'YME audiotechnik', 'Anzhee'],
+    portfolioTitle: 'Портфолио <span class="highlight">проектов</span>',
+    portfolioSub: 'Реальные проекты, в которых я участвовал как руководитель и стратег. Каждый кейс — это система, которую мы выстроили и развили.'
   },
   en: {
     nameLabel: 'Your name',
@@ -124,7 +126,7 @@ const data = {
     perspectiveLabel: 'Choose your perspective',
     perspectiveSub: 'One experience. Three perspectives. One systemic approach.',
     pLabels: ['Business', 'Marketing', 'Strategy'],
-    nav: ['Cases', 'Metrics', 'Competencies', 'Contact'],
+    nav: ['Cases', 'Metrics', 'Competencies', 'Portfolio', 'Contact'],
     headerContact: 'Contact',
     logoSub: 'Business · Marketing · Strategy',
     burgerLabel: 'Menu',
@@ -209,7 +211,9 @@ const data = {
     },
     brandsLabel: 'Brands',
     brandsSub: "I've worked with",
-    brandsList: ['Fender', 'Yamaha', 'Marshall', 'Mesa Boogie', 'Korg', 'Vox', 'Roland', 'Boss', 'Kawai', 'Gibson', 'Epiphone', 'Ibanez', 'Schecter', 'Orange', 'Blackstar', 'JBL', 'Fishman', 'Sennheiser', 'AKG', 'FBT', 'Behringer', 'Ampeg', 'Line 6', 'Fender Amps', 'Jackson', 'Charvel', 'Gretsch', 'Squier', 'Mono', 'Takamine', 'Soundcraft', 'DBX', 'DigiTech', 'TC Electronic', 'PreSonus', 'Focusrite', 'Novation', 'Akai Professional', 'Native Instruments', 'Ableton', 'Universal Audio', "D'Addario", 'Involight', 'YME audiotechnik', 'Anzhee']
+    brandsList: ['Fender', 'Yamaha', 'Marshall', 'Mesa Boogie', 'Korg', 'Vox', 'Roland', 'Boss', 'Kawai', 'Gibson', 'Epiphone', 'Ibanez', 'Schecter', 'Orange', 'Blackstar', 'JBL', 'Fishman', 'Sennheiser', 'AKG', 'FBT', 'Behringer', 'Ampeg', 'Line 6', 'Fender Amps', 'Jackson', 'Charvel', 'Gretsch', 'Squier', 'Mono', 'Takamine', 'Soundcraft', 'DBX', 'DigiTech', 'TC Electronic', 'PreSonus', 'Focusrite', 'Novation', 'Akai Professional', 'Native Instruments', 'Ableton', 'Universal Audio', "D'Addario", 'Involight', 'YME audiotechnik', 'Anzhee'],
+    portfolioTitle: 'Project <span class="highlight">portfolio</span>',
+    portfolioSub: 'Real projects where I acted as a leader and strategist. Each case is a system we built and developed.'
   }
 };
 
@@ -461,7 +465,7 @@ function renderHero() {
 
 function renderNav() {
   const d = getLangData();
-  const navItems = ['navCases','navMetrics','navCompetencies','navContact'];
+  const navItems = ['navCases','navMetrics','navCompetencies','navPortfolio','navContact'];
   d.nav.forEach((label, i) => {
     if (navItems[i]) document.getElementById(navItems[i]).textContent = label;
   });
@@ -556,6 +560,20 @@ function renderBrands() {
   track.innerHTML = doubled.map(brand => `<span class="brand-slide">${brand}</span>`).join('');
 }
 
+function renderPortfolio() {
+  const d = getLangData();
+  const titleEl = document.getElementById('portfolioTitle');
+  const subEl = document.getElementById('portfolioSub');
+  
+  if (titleEl) titleEl.innerHTML = d.portfolioTitle || 'Портфолио <span class="highlight">проектов</span>';
+  if (subEl) subEl.innerHTML = d.portfolioSub || '<p>Реальные проекты, в которых я участвовал как руководитель и стратег. Каждый кейс — это система, которую мы выстроили и развили.</p>';
+  
+  // Обновляем язык в портфолио через глобальную функцию
+  if (typeof window.updatePortfolioLanguage === 'function') {
+    window.updatePortfolioLanguage();
+  }
+}
+
 function renderCases(preserveScroll = false) {
   const d = getLangData();
   const perspective = currentPerspective;
@@ -636,6 +654,7 @@ function renderAll() {
   renderFuture();
   renderContact();
   renderBrands();
+  renderPortfolio();
   renderCases();
   syncAccentStyles();
 }
@@ -719,6 +738,12 @@ function switchLang(lang) {
   document.getElementById('langInactiveF').textContent = langMap[lang].inactive;
 
   renderAll();
+  
+  // Обновляем портфолио через глобальную функцию
+  if (typeof window.updatePortfolioLanguage === 'function') {
+    window.updatePortfolioLanguage();
+  }
+  
   try { localStorage.setItem('executive_lang', lang); } catch (e) {}
 }
 
