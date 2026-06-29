@@ -284,8 +284,8 @@ const casesList = {
         },
         en: {
           task: 'Build the marketing strategy and digital infrastructure for a manufacturer and distributor of professional equipment (revenue 400+ million RUB, 20+ brands, 300+ dealers). Drive lead growth and increase organic visibility in a highly competitive professional market.',
-          solution: 'Optimized digital channels: budget reallocation, analytics setup, and campaign tuning. Increased organic visibility by 310+ ICS points through content strategy and technical optimization. Organized industry events and dealer programs with budgets up to 6 million RUB. Implemented AI-based automation of marketing, content, and internal processes, reducing manual workload and accelerating lead processing.',
-          result: 'Lead generation increased by 30%+. Search visibility improved by 310+ ICS points. AI automation reduced operational costs and processing times. Launched new product lines in collaboration with the commercial department.'
+          solution: 'Optimized digital channels: budget reallocation, analytics setup, and campaign tuning. Increased organic visibility by 310+ points through content strategy and technical optimization. Organized industry events and dealer programs with budgets up to 6 million RUB. Implemented AI-based automation of marketing, content, and internal processes, reducing manual workload and accelerating lead processing.',
+          result: 'Lead generation increased by 30%+. Search visibility improved by 310+ points. AI automation reduced operational costs and processing times. Launched new product lines in collaboration with the commercial department.'
         }
       }
     }
@@ -352,8 +352,8 @@ const casesList = {
         },
         en: {
           task: 'Build a marketing strategy for a professional equipment manufacturer. Drive lead growth and strengthen the brand in a competitive environment.',
-          solution: 'Optimized digital channels, enhanced organic visibility (+310 ICS). Launched industry events and dealer programs (budget 6 million RUB). Implemented AI-based marketing and content automation.',
-          result: 'Lead generation increased by 30%+. Search visibility improved by 310+ ICS points. AI automation reduced operational costs. Launched new product lines.'
+          solution: 'Optimized digital channels, enhanced organic visibility (+310). Launched industry events and dealer programs (budget 6 million RUB). Implemented AI-based marketing and content automation.',
+          result: 'Lead generation increased by 30%+. Search visibility improved by 310+ points. AI automation reduced operational costs. Launched new product lines.'
         }
       }
     }
