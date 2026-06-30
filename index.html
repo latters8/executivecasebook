@@ -194,7 +194,12 @@
     @keyframes plRingRot { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
 
     #pl-portrait {
-      width: 100%; border-radius: 50%; display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 50%;
+      display: block;
       box-shadow: 0 0 0 1px rgba(212,175,55,0.12), 0 40px 120px rgba(9,16,27,0.95);
       filter: contrast(1.03) saturate(0.92);
     }
@@ -217,20 +222,20 @@
     }
     @keyframes plPanelFloat {
       0%   { opacity:0; transform:scale(0.96); }
-      5%   { opacity:1; transform:scale(1); }
+      10%  { opacity:1; transform:scale(1); }
       95%  { opacity:1; transform:scale(1); }
       100% { opacity:0; transform:scale(1); }
     }
 
-    /* Расположение панелей с ускоренными задержками */
+    /* Расположение панелей с плавными задержками */
     .pl-p1{ left:4%;  top:10%; --fx:-6px; --fy:-4px; animation-delay:0s; }
-    .pl-p2{ left:3%;  top:42%; --fx:-5px; --fy: 6px; animation-delay:0.05s; }
-    .pl-p3{ right:4%; top:8%; --fx: 6px; --fy:-5px; animation-delay:0.02s; }
-    .pl-p4{ right:3%; top:40%; --fx: 5px; --fy: 7px; animation-delay:0.08s; }
-    .pl-p5{ left:50%; top:5%;  transform:translateX(-50%); --fx:0px; --fy:-5px; animation-delay:0.04s; min-width:clamp(200px,28vw,360px); text-align:center; }
-    .pl-p6{ left:4%;  top:74%; --fx:-6px; --fy:4px; animation-delay:0.1s; }
-    .pl-p7{ right:4%; top:72%; --fx:6px; --fy:5px; animation-delay:0.12s; }
-    .pl-p8{ left:50%; top:88%; transform:translateX(-50%); --fx:0px; --fy:0px; animation-delay:0.15s; min-width:clamp(160px,24vw,300px); text-align:center; }
+    .pl-p2{ left:3%;  top:42%; --fx:-5px; --fy: 6px; animation-delay:0.2s; }
+    .pl-p3{ right:4%; top:8%; --fx: 6px; --fy:-5px; animation-delay:0.1s; }
+    .pl-p4{ right:3%; top:40%; --fx: 5px; --fy: 7px; animation-delay:0.3s; }
+    .pl-p5{ left:50%; top:5%;  transform:translateX(-50%); --fx:0px; --fy:-5px; animation-delay:0.15s; min-width:clamp(200px,28vw,360px); text-align:center; }
+    .pl-p6{ left:4%;  top:74%; --fx:-6px; --fy:4px; animation-delay:0.4s; }
+    .pl-p7{ right:4%; top:72%; --fx:6px; --fy:5px; animation-delay:0.45s; }
+    .pl-p8{ left:50%; top:88%; transform:translateX(-50%); --fx:0px; --fy:0px; animation-delay:0.5s; min-width:clamp(160px,24vw,300px); text-align:center; }
 
     .pl-label { font-size:clamp(0.4rem,0.6vw,0.52rem); letter-spacing:0.3em; text-transform:uppercase; color:#D4AF37; font-weight:500; }
     .pl-value { font-size:clamp(1rem,1.7vw,1.5rem); font-weight:200; color:#F3F4F6; letter-spacing:0.03em; line-height:1.1; }
@@ -342,6 +347,7 @@
     .portfolio-section {
       padding: 4rem 0 5rem;
       position: relative;
+      min-height: 700px;
     }
     .portfolio-filters {
       display: flex;
@@ -378,6 +384,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
       gap: 2rem;
+      min-height: 450px;
     }
 
     .portfolio-card {
@@ -585,6 +592,7 @@
     @media (max-width: 768px) {
       .portfolio-grid {
         grid-template-columns: 1fr;
+        min-height: 600px;
       }
       .portfolio-modal__inner {
         padding: 1.5rem;
@@ -594,6 +602,9 @@
       }
       .portfolio-modal__achievements {
         grid-template-columns: 1fr 1fr;
+      }
+      .portfolio-section {
+        min-height: 800px;
       }
     }
   </style>
@@ -1184,7 +1195,7 @@ PARTICLES
   // PRELOADER (ОПТИМИЗИРОВАННЫЙ)
   // ══════════════════════════════════════
   (function() {
-    var DURATION = 4000; // 4 seconds — карточки успевают появиться
+    var DURATION = 5000; // 5 seconds — карточки успевают появиться
     var pl = document.getElementById('preloader');
     var body = document.body;
     if (!pl) return;
@@ -1262,7 +1273,7 @@ PARTICLES
       }, 950);
     }
 
-    // Auto-dismiss after 4s
+    // Auto-dismiss after 5s
     setTimeout(dismiss, DURATION);
 
     // Skip button
@@ -1403,7 +1414,7 @@ PARTICLES
   })();
 </script>
 
-<!-- ═══ СКРИПТ ДЛЯ ПОРТФОЛИО ═══ -->
+<!-- ═══ PRELOADER SCRIPT ═══ -->
 <script>
   (function initPortfolio() {
     // Определяем текущий язык
