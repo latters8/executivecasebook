@@ -189,3 +189,89 @@ const data={ru:{heroTag:"14+ лет практики \xb7 B2B \xb7 B2C \xb7 Busi
         </div>
       </div>
     `}),c+="</div>",i.classList.remove("fade-in"),i.classList.add("fade-out"),setTimeout(()=>{i.innerHTML=c,i.classList.remove("fade-out"),i.classList.add("fade-in"),syncAccentStyles(),requestAnimationFrame(()=>{i.querySelectorAll(".case-card").forEach(e=>e.classList.add("visible")),e&&window.scrollTo({top:n,behavior:"auto"})})},180)}function renderAll(){renderHero(),renderNav(),renderPerspective(),renderMetrics(),renderCompetencies(),renderFuture(),renderContact(),renderBrands(),renderPortfolio(currentPortfolioFilter),renderCases(),syncAccentStyles()}function switchPerspective(e){if(e===currentPerspective)return;window.scrollY,currentPerspective=e,document.querySelectorAll(".perspective-option").forEach(e=>e.classList.remove("active"));let t=document.querySelector(`.perspective-option[data-perspective="${e}"]`);t&&t.classList.add("active"),applyTheme(e),renderCases(!0),setTimeout(()=>{let e=document.getElementById("cases");if(e){let t=window.scrollY+e.getBoundingClientRect().top-96;window.scrollTo({top:t,behavior:"smooth"})}},220);try{localStorage.setItem("executive_perspective",e)}catch(a){}}function applyTheme(e){let t={business:"#C9A84C",marketing:"#4A9EFF",strategy:"#A78BFA"}[e]||"#C9A84C",a={business:"rgba(201,168,76,0.12)",marketing:"rgba(74,158,255,0.12)",strategy:"rgba(167,139,250,0.12)"}[e]||"rgba(201,168,76,0.12)";document.body.className=`perspective-${e}`,document.documentElement.style.setProperty("--accent",t),document.documentElement.style.setProperty("--accent-glow",{business:"rgba(201,168,76,0.20)",marketing:"rgba(74,158,255,0.20)",strategy:"rgba(167,139,250,0.20)"}[e]||"rgba(201,168,76,0.20)"),document.documentElement.style.setProperty("--accent-border",a);let n=document.querySelector(".perspective-switch");n&&(n.style.borderColor=a),document.querySelectorAll(".btn--primary").forEach(e=>{e.style.background=t}),syncAccentStyles()}function switchLang(e){if(e===currentLang)return;currentLang=e,document.title="ru"===e?data.ru.pageTitle:data.en.pageTitle;let t={ru:{active:"Русский",inactive:"English"},en:{active:"English",inactive:"Русский"}};document.getElementById("langActive").textContent=t[e].active,document.getElementById("langInactive").textContent=t[e].inactive,document.getElementById("langActiveF").textContent=t[e].active,document.getElementById("langInactiveF").textContent=t[e].inactive,renderAll();try{localStorage.setItem("executive_lang",e)}catch(a){}}function loadSaved(){let e="ru",t="business";try{let a=localStorage.getItem("executive_lang");("ru"===a||"en"===a)&&(e=a);let n=localStorage.getItem("executive_perspective");("business"===n||"marketing"===n||"strategy"===n)&&(t=n)}catch(r){}currentLang=e,currentPerspective=t,document.title="ru"===e?data.ru.pageTitle:data.en.pageTitle;let s={ru:{active:"Русский",inactive:"English"},en:{active:"English",inactive:"Русский"}};document.getElementById("langActive").textContent=s[e].active,document.getElementById("langInactive").textContent=s[e].inactive,document.getElementById("langActiveF").textContent=s[e].active,document.getElementById("langInactiveF").textContent=s[e].inactive,document.querySelectorAll(".perspective-option").forEach(e=>e.classList.remove("active"));let o=document.querySelector(`.perspective-option[data-perspective="${t}"]`);o&&o.classList.add("active"),applyTheme(t),renderAll()}function initMetricsCloud(){let e=document.querySelectorAll(".metric-node"),t=document.querySelector(".cloud-diagonals"),a=document.querySelectorAll(".cloud-orbit");if(!e.length)return;let n=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){let t=parseInt(e.target.dataset.delay)||0;setTimeout(()=>{e.target.classList.add("visible")},100*t),n.unobserve(e.target)}})},{threshold:.1,rootMargin:"0px 0px -30px 0px"});e.forEach(e=>n.observe(e));let r=0,s=e.length;e.forEach(e=>{let n=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&(++r>=Math.ceil(.6*s)&&(t&&t.classList.add("active"),a.forEach(e=>e.classList.add("active"))),n.unobserve(e.target))})},{threshold:.3});n.observe(e)})}document.addEventListener("DOMContentLoaded",function(){let e=document.querySelectorAll(".perspective-option");e.forEach(function(t){t.addEventListener("click",function(t){t.preventDefault();let a=this.dataset.perspective;a!==currentPerspective&&(e.forEach(e=>e.classList.remove("active")),this.classList.add("active"),switchPerspective(a))})}),loadSaved(),document.getElementById("langSwitch").addEventListener("click",function(){switchLang("ru"===currentLang?"en":"ru")}),document.getElementById("langSwitchFooter").addEventListener("click",function(){switchLang("ru"===currentLang?"en":"ru")});let t=document.getElementById("burger"),a=document.getElementById("nav");t.addEventListener("click",function(){t.classList.toggle("active"),a.classList.toggle("open")}),document.querySelectorAll(".nav a").forEach(function(e){e.addEventListener("click",function(){t.classList.remove("active"),a.classList.remove("open")})});let n=document.getElementById("backToTop");window.addEventListener("scroll",function(){n.classList.toggle("visible",window.pageYOffset>400)}),n.addEventListener("click",function(){window.scrollTo({top:0,behavior:"smooth"})});let r=document.getElementById("header");window.addEventListener("scroll",function(){r.classList.toggle("scrolled",window.pageYOffset>50)}),document.querySelectorAll('a[href^="#"]').forEach(function(e){e.addEventListener("click",function(e){e.preventDefault();let t=document.querySelector(this.getAttribute("href"));t&&window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-80,behavior:"smooth"})})});let s=new IntersectionObserver(function(e){e.forEach(function(e){e.isIntersecting&&e.target.classList.add("visible")})},{threshold:.1,rootMargin:"0px 0px -40px 0px"});document.querySelectorAll(".reveal, .stagger, .competency-card, .case-card, .value-item, .card").forEach(function(e){s.observe(e)}),initPortfolioFilters(),initCaseLinks(),renderPortfolio("all"),initMetricsCloud(),console.log("✅ Executive Casebook v21 — полная версия с портфолио")}),function e(){function t(){let e=document.getElementById("brandsTrack"),a=document.getElementById("brandsLabel"),n=document.getElementById("brandsSub");if(!e){setTimeout(t,300);return}if(e.children.length>0)return;let r=getLangData();if(!r||!r.brandsList){setTimeout(t,300);return}a&&(a.textContent=r.brandsLabel),n&&(n.textContent=r.brandsSub);let s=r.brandsList||[];e.innerHTML=[...s,...s].map(e=>`<span class="brand-slide">${e}</span>`).join(""),console.log("✅ Слайдер загружен принудительно")}t(),setTimeout(t,500)}();
+/* ===== Доп. эффекты (сдержанный набор): считающиеся цифры + мягкий параллакс — добавлено ===== */
+(function(){
+  'use strict';
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function formatGrouped(n){
+    return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+  }
+
+  function animateCount(el){
+    var raw = el.textContent.trim();
+    var m = raw.match(/^([+\-]?)(\d[\d\s]*)(.*)$/);
+    if (!m) return;
+    var prefix = m[1] || '';
+    var digits = m[2].replace(/\s/g, '');
+    var suffix = m[3] || '';
+    var target = parseInt(digits, 10);
+    if (isNaN(target)) return;
+    if (reduceMotion) return;
+
+    var duration = 1300;
+    var start = null;
+    el.classList.add('count-animating');
+
+    function step(ts){
+      if (start === null) start = ts;
+      var p = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + formatGrouped(target * eased) + suffix;
+      if (p < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = prefix + formatGrouped(target) + suffix;
+        el.classList.remove('count-animating');
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  function initCounters(){
+    var targets = document.querySelectorAll('.hero-metric__number, .metric-node__number');
+    if (!targets.length) return;
+    var seen = new WeakSet();
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting && !seen.has(entry.target)) {
+          seen.add(entry.target);
+          animateCount(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    targets.forEach(function(t){ io.observe(t); });
+  }
+
+  function initHeroParallax(){
+    var bg = document.querySelector('.hero__bg-image');
+    var hero = document.getElementById('hero');
+    if (!bg || !hero || reduceMotion) return;
+    var ticking = false;
+    function update(){
+      var rect = hero.getBoundingClientRect();
+      var offset = rect.top * 0.12;
+      bg.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function(){
+      if (!ticking) {
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, { passive: true });
+    update();
+  }
+
+  function initExtras(){
+    initCounters();
+    initHeroParallax();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initExtras);
+  } else {
+    initExtras();
+  }
+})();
