@@ -210,7 +210,7 @@ const data={ru:{heroTag:"14+ лет практики \xb7 B2B \xb7 B2C \xb7 Busi
     if (isNaN(target)) return;
     if (reduceMotion) return;
 
-    var duration = 1300;
+    var duration = 2000;
     var start = null;
     el.classList.add('count-animating');
 
